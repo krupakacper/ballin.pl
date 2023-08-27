@@ -115,6 +115,19 @@
 .left-app-topbar {
    display: flex;
    gap: 10px;
+   align-items: center;
+}
+.app-title {
+   margin: 0;
+   line-height: 100%;
+}
+.right-app-topbar {
+   display: flex;
+   align-items: center;
+   gap: 2px;
+}
+.app-action-icon {
+   display: block;
 }
 
 

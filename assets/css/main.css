@@ -1,0 +1,213 @@
+/* ============================= */
+/* ===== VARIABLES & SETUP ===== */
+/* ============================= */
+
+:root {
+   --white: #fff;
+   --black: #0A0A0A;
+   --grey-primary: #B4B4B4;
+   --grey-brigter: #C0C0C0;
+   --grey-darker: #808080;
+   --navy-blue: #06157F;
+
+   --wallpaper: #008081;
+}
+
+@font-face {
+   font-family: Sysfont;
+   src: url('../../assets/fonts/sysfont.otf') format(opentype);
+}
+
+* {
+   padding: 0;
+   margin: 0;
+   box-sizing: border-box;
+   font-family: Sysfont;
+}
+
+
+
+
+/* =================== */
+/* ===== BUTTONS ===== */
+/* =================== */
+
+.btn-primary a {
+   padding: 6px 12px;
+   position: relative;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   gap: 6px;
+   text-decoration: none;
+   color: var(--black);
+   box-shadow: inset -2px -2px 0px var(--black), inset -4px -4px 0px var(--grey-darker), inset 2px 2px 0px var(--white);
+}
+.btn-primary img {
+   height: 85%;
+}
+
+.btn-primary a:focus {
+   box-shadow: inset 2px 2px 0px var(--black), inset -2px -2px 0px var(--white);
+   background: url('../../assets/img/elem-parts/btn-focus-bg.svg');
+}
+
+
+
+
+/* =================== */
+/* ===== DESKTOP ===== */
+/* =================== */
+
+.desktop {
+   background: var(--wallpaper);
+   width: 100%;
+   height: 100vh;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+.desktop-folder{
+   position: absolute;
+   top: 30px;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   font-size: 1.5rem;
+   color: white;
+   gap: 5px;
+}
+.menu-folder {
+   left: 25px;
+}
+.cart-folder {
+   right: 25px;  
+}
+
+
+
+
+/* ======================= */
+/* ===== APPLICATION ===== */
+/* ======================= */
+
+.app-container {
+   width: clamp(300px, 95%, 1300px);
+   background: var(--grey-primary);
+   min-height: 75vh;
+   position: relative;
+   box-shadow: inset -2px -2px 0px var(--black), inset -4px -4px 0px var(--grey-darker), inset 2px 2px 0px var(--grey-primary), inset 4px 4px 0px var(--white);
+   padding: 10px;
+}
+
+/* Topbar */
+.app-topbar {
+   background: var(--navy-blue);
+   padding: 6px;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   color: var(--white);
+   font-size: .9rem;
+   letter-spacing: 1px;
+}
+.left-app-topbar {
+   display: flex;
+   gap: 10px;
+}
+
+
+
+
+/* ================ */
+/* ===== SHOP ===== */
+/* ================ */
+
+.shop-app-products-container {
+   display: grid;
+   grid-template-columns: repeat(2, 1fr);
+   gap: 20px;
+   padding: 20px;
+   border: 2px solid var(--grey-darker);
+   margin-top: 25px;
+   height: 62.5vh;
+   overflow-y: auto;
+   position: relative;
+   z-index: 10;
+}
+
+/* product container */
+.shop-product {
+   height: 500px;
+   position: relative;
+   box-shadow: inset -2px -2px 0px var(--black), inset -4px -4px 0px var(--grey-darker), inset 2px 2px 0px var(--grey-darker), inset 4px 4px 0px var(--white);
+   padding: 8px;
+   display: flex;
+   flex-direction: column;
+   gap: 10px;
+}
+
+.shop-product-topbar {
+   background: var(--navy-blue);
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   padding: 3px 5px;
+}
+
+/* product image */
+.shop-product-image-container {
+   background: var(--white);
+   width: 100%;
+   height: 200px;
+   position: relative;
+   box-shadow: inset 2px 2px 0px var(--grey-darker), inset 4px 4px 0px var(--black), inset -2px -2px 0px var(--white), inset -4px -4px 0px var(--grey-primary), inset -6px -6px 0px var(--grey-darker), inset 6px 0px 0px var(--grey-darker);
+}
+
+/* product footer */
+
+
+
+
+
+/* ================== */
+/* ===== FOOTER ===== */
+/* ================== */
+
+.footer-toolbar {
+   background: var(--grey-primary);
+   width: 100%;
+   height: 50px;
+   position: absolute;
+   bottom: 0;
+   left: 0;
+   padding: 6px 5px 10px;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   border-top: 2px solid white;
+}
+.footer-elem a {
+   height: 100% !important;
+   font-size: 1.15rem;
+}
+
+/* Main menu */
+.menu-start {
+   display: flex;
+   list-style-type: none;
+   gap: 15px;
+}
+
+/* Clock */
+.clock {
+   padding-inline: 16px;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   position: relative;
+   height: calc(100% + 5px);
+   box-shadow: inset 2px 2px 0px var(--grey-darker), inset -2px -2px 0px var(--white);
+   font-size: 1.15rem;
+}

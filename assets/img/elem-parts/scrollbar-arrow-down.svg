@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="17"
+   height="16"
+   viewBox="0 0 17 16"
+   fill="none"
+   version="1.1"
+   id="svg4"
+   sodipodi:docname="scrollbar-arrow.svg"
+   inkscape:version="1.1.2 (b8e25be833, 2022-02-05)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs8" />
+  <sodipodi:namedview
+     id="namedview6"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     showgrid="false"
+     inkscape:zoom="16.5"
+     inkscape:cx="3.7575758"
+     inkscape:cy="2.2424242"
+     inkscape:window-width="1920"
+     inkscape:window-height="1017"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg4" />
+  <path
+     fill-rule="evenodd"
+     clip-rule="evenodd"
+     d="M 16.156216,3.8822118 0.843784,3.8822091 V 5.9410309 H 16.156216 Z M 3.031336,5.9412909 h 10.93738 v 2.05882 h -2.1874 V 10.058711 H 5.218836 V 8.0001109 h -2.1875 z m 6.56249,4.1176801 h -2.18749 v 2.05882 h 2.18749 z"
+     fill="#0a0a0a"
+     id="path2" />
+</svg>

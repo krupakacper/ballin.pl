@@ -31,7 +31,12 @@
 /* =================== */
 /* ===== BUTTONS ===== */
 /* =================== */
-
+.btn-primary {
+   padding: 0;
+   /* background: none; */
+   border: none;
+   outline: none;
+}
 .btn-primary a {
    padding: 6px 12px;
    position: relative;
@@ -41,7 +46,11 @@
    gap: 6px;
    text-decoration: none;
    color: var(--black);
+   background-color: var(--grey-primary);
    box-shadow: inset -2px -2px 0px var(--black), inset -4px -4px 0px var(--grey-darker), inset 2px 2px 0px var(--white);
+}
+.btn-primary a:hover {
+   filter: brightness(.9);
 }
 .btn-primary img {
    height: 85%;
@@ -397,11 +406,24 @@ background: var(--grey-darker);
    font-size: 1.25rem;
    padding: 5px 45px 5px 5px;
 }
+.menu-start-submenu-item a:hover {
+   background: var(--grey-primary);
+   box-shadow: inset 0px 2px 0px var(--grey-darker), inset 0px 4px 0px var(--white), inset 0px -2px 0px var(--grey-darker), inset 0px -4px 0px var(--white);
+   filter: brightness(.9);
+}
 .menu-start-submenu-item img {
    width: 50px;
 }
+.menu-start-submenu-item:first-child a:hover {
+   box-shadow: inset 0px 0px 0px var(--grey-darker), inset 0px 0px 0px var(--white), inset 0px -2px 0px var(--grey-darker), inset 0px -4px 0px var(--white);
+}
+.menu-start-submenu-item:nth-last-child(2) a:hover {
+   box-shadow: inset 0px 2px 0px var(--grey-darker), inset 0px 4px 0px var(--white), inset 0px 0px 0px var(--grey-darker), inset 0px 0px 0px var(--white);
+}
 .menu-start-submenu-item:last-child {
-   justify-content: right;
+   box-shadow: inset 0px 2px 0px var(--grey-darker), inset 0px 4px 0px var(--white);
+}
+.menu-start-submenu-item:last-child a:hover {
    box-shadow: inset 0px 2px 0px var(--grey-darker), inset 0px 4px 0px var(--white);
 }
 

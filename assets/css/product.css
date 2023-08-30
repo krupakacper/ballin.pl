@@ -1,0 +1,41 @@
+/* ============================= */
+/* ===== VARIABLES & SETUP ===== */
+/* ============================= */
+
+:root {
+   --white: #fff;
+   --black: #0A0A0A;
+   --grey-primary: #B4B4B4;
+   --grey-brigter: #C0C0C0;
+   --grey-darker: #808080;
+   --navy-blue: #06157F;
+
+   --wallpaper: #008081;
+}
+
+
+
+
+/* ========================= */
+/* ===== CHARACTER.EXE ===== */
+/* ========================= */
+
+.character-data-container {
+   font-size: 1.375rem;
+}
+.character-row-1 {
+   text-align: center;
+   padding: 15px 0;
+   box-shadow: inset 0px -2px 0px var(--grey-darker), inset 0px -4px 0px var(--white);
+}
+.character-row-2 {
+   display: flex;
+   padding: 20px 25px 50px;
+   box-shadow: inset 0px -2px 0px var(--grey-darker), inset 0px -4px 0px var(--white);
+}
+.character-prof {
+   background-color: var(--grey-brigter);
+   width: 25%;
+   border-radius: 50%;
+   aspect-ratio: 1/1;
+}

@@ -3,10 +3,11 @@
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Character | Ballin.pl</title>
+   <title>Product | Ballin.pl</title>
 
    <!-- LINK CSS -->
    <link rel="stylesheet" href="assets/css/main.css">
+   <link rel="stylesheet" href="assets/css/product.css">
 
 </head>
 <body>
@@ -69,33 +70,37 @@
          </div>
 
 
-         <div class="character-row-1">
-            name.surname
-         </div>
+         <div class="character-data-container">
 
-         <div class="character-row-2">
-            <div class="character-prof">
-
+            <div class="character-row-1">
+               name.surname
             </div>
-            <div class="character-details">
-               <div class="character-prices">
-                  <span>Price</span>
-                  <span>Stock</span>
-                  <span>Apiece</span>
+
+            <div class="character-row-2">
+               <div class="character-prof">
+
                </div>
-               <div class="character-buttons">
-                  <div class="btn-primary">
-                     XS/S/M/L/XL
+               <div class="character-details">
+                  <div class="character-prices">
+                     <span>Price</span>
+                     <span>Stock</span>
+                     <span>Apiece</span>
                   </div>
-                  <div class="btn-secondary">
-                     Add to cart
+                  <div class="character-buttons">
+                     <div class="btn-primary">
+                        XS/S/M/L/XL
+                     </div>
+                     <div class="btn-secondary">
+                        Add to cart
+                     </div>
                   </div>
                </div>
             </div>
-         </div>
 
-         <div class="character-row-3">
-            
+            <div class="character-row-3">
+               
+            </div>
+
          </div>
 
       </div>
@@ -111,27 +116,29 @@
    <footer class="footer-toolbar">
 
       <nav class="footer-menu">
-         <ul class="menu-start">  
+         <div class="menu-start">  
             <!-- Main menu -->
-            <li class="menu-start-item btn-primary footer-elem btn-primary-click-bg"><a id="menu-start-btn" class="btn-link" href="#" aria-expanded="false" aria-haspopup="true" aria-controls="menu-id"><img src="assets/img/icons/menu icons/start-icon.svg" alt="Ikonka menu start">START</a>
-            </li>
+            <button type="button" class="menu-start-item btn-primary footer-elem btn-primary-click-bg"><a id="menu-start-btn" class="btn-link" href="#"><img src="assets/img/icons/menu icons/start-icon.svg" alt="Ikonka menu start">START</a>
+            </button>
             <!-- Main menu submenu -->
             <div class="menu-start-submenu-container">
                <div class="menu-stripe"><p>BALLIN<span>ESC</span></p></div>
-               <ul class="menu-start-submenu">
-                  <li class="menu-start-submenu-item btn-primary-focus-bg"><a class="btn-link" href="#"><img src="assets/img/icons/menu icons/vision-icon.svg" alt="Ikonka menu Vision">Vision</a></li>
-                  <li class="menu-start-submenu-item btn-primary-focus-bg"><a class="btn-link" href="#"><img src="assets/img/icons/menu icons/support-icon.svg" alt="Ikonka menu Support">Support</a></li>
-                  <li class="menu-start-submenu-item btn-primary-focus-bg"><a class="btn-link" href="#"><img src="assets/img/icons/menu icons/contact-icon.svg" alt="Ikonka menu Contact">Contact</a></li>
-                  <li class="menu-start-submenu-item btn-primary-focus-bg"><a class="btn-link" href="#"><img src="assets/img/icons/menu icons/terms-icon.svg" alt="Ikonka menu Terms">Terms</a></li>
-                  <li class="menu-start-submenu-item btn-primary-focus-bg"><a class="btn-link" href="#"><img src="assets/img/icons/menu icons/privacy-icon.svg" alt="Ikonka menu Privacy">Privacy</a></li>
-                  <li class="menu-start-submenu-item btn-primary-focus-bg"><a class="btn-link" href="index.html"><img src="assets/img/icons/menu icons/escapizm-icon.svg" alt="Ikonka menu Escapizm">Escapizm</a></li>
-               </ul>
+               <nav>
+                  <ul class="menu-start-submenu">
+                     <li class="menu-start-submenu-item btn-primary-focus-bg"><a class="btn-link" href="#"><img src="assets/img/icons/menu icons/vision-icon.svg" alt="Ikonka menu Vision">Vision</a></li>
+                     <li class="menu-start-submenu-item btn-primary-focus-bg"><a class="btn-link" href="#"><img src="assets/img/icons/menu icons/support-icon.svg" alt="Ikonka menu Support">Support</a></li>
+                     <li class="menu-start-submenu-item btn-primary-focus-bg"><a class="btn-link" href="#"><img src="assets/img/icons/menu icons/contact-icon.svg" alt="Ikonka menu Contact">Contact</a></li>
+                     <li class="menu-start-submenu-item btn-primary-focus-bg"><a class="btn-link" href="#"><img src="assets/img/icons/menu icons/terms-icon.svg" alt="Ikonka menu Terms">Terms</a></li>
+                     <li class="menu-start-submenu-item btn-primary-focus-bg"><a class="btn-link" href="#"><img src="assets/img/icons/menu icons/privacy-icon.svg" alt="Ikonka menu Privacy">Privacy</a></li>
+                     <li class="menu-start-submenu-item btn-primary-focus-bg"><a class="btn-link" href="index.html"><img src="assets/img/icons/menu icons/escapizm-icon.svg" alt="Ikonka menu Escapizm">Escapizm</a></li>
+                  </ul>
+               </nav>
             </div>
             <!-- Social links -->
-            <li class="menu-start-item btn-primary footer-elem btn-primary-active-bg"><a class="btn-link" href="https://www.facebook.com/ballinmob" target="_blank"><img src="assets/img/icons/menu icons/facebook-icon.svg" alt="Ikonka facebook">FACEBOOK</a></li>
-            <li class="menu-start-item btn-primary footer-elem btn-primary-active-bg"><a class="btn-link" href="https://www.instagram.com/ballin.pl/" target="_blank"><img src="assets/img/icons/menu icons/instagram-icon.svg" alt="Ikonka instagram">INSTAGRAM</a></li>
+            <button class="menu-start-item btn-primary footer-elem btn-primary-active-bg"><a class="btn-link" href="https://www.facebook.com/ballinmob" target="_blank"><img src="assets/img/icons/menu icons/facebook-icon.svg" alt="Ikonka facebook">FACEBOOK</a></button>
+            <button class="menu-start-item btn-primary footer-elem btn-primary-active-bg"><a class="btn-link" href="https://www.instagram.com/ballin.pl/" target="_blank"><img src="assets/img/icons/menu icons/instagram-icon.svg" alt="Ikonka instagram">INSTAGRAM</a></button>
 
-         </ul>
+         </div>
       </nav>
 
       <div class="clock">

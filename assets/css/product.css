@@ -20,22 +20,86 @@
 /* ===== CHARACTER.EXE ===== */
 /* ========================= */
 
+.character-exe {
+   height: 100%;
+}
 .character-data-container {
-   font-size: 1.375rem;
+   font-size: 1.5rem;
+   display: flex;
+   flex-direction: column;
+   height: 100%;
 }
 .character-row-1 {
    text-align: center;
    padding: 15px 0;
-   box-shadow: inset 0px -2px 0px var(--grey-darker), inset 0px -4px 0px var(--white);
+   box-shadow: inset 0px -2px 0px var(--white), inset 0px -4px 0px var(--grey-darker);
 }
 .character-row-2 {
    display: flex;
-   padding: 20px 25px 50px;
-   box-shadow: inset 0px -2px 0px var(--grey-darker), inset 0px -4px 0px var(--white);
+   padding: 20px 25px 75px;
+   box-shadow: inset 0px -2px 0px var(--white), inset 0px -4px 0px var(--grey-darker), inset 0px -6px 0px var(--black);
 }
 .character-prof {
    background-color: var(--grey-brigter);
-   width: 25%;
+   width: 30%;
    border-radius: 50%;
    aspect-ratio: 1/1;
+}
+.character-details {
+   display: flex;
+   height: initial;
+   flex-direction: column;
+   justify-content: flex-end;
+   align-items: center;
+   width: 100%;
+   padding-inline: 26px;
+   gap: 20px;
+}
+.character-prices {
+   display: flex;
+   justify-content: space-between;
+   width: 100%;
+}
+.character-buttons {
+   display: flex;
+   justify-content: space-between;
+   width: 100%;
+   gap: 15px;
+}
+.character-buttons .btn-primary, .character-buttons .btn-secondary {
+   font-size: .9em;
+   width: 100%;
+}
+
+.character-row-3 {
+   margin: 8px;
+   height: 100%;
+   display: flex;
+   flex-direction: column;
+   gap: 8px;
+   overflow: hidden;
+}
+.character-row-3 .character-buttons {
+   gap: 4px;
+}
+.product-description-container {
+   height: 100%;
+   display: flex;
+   flex-direction: column;
+   gap: 3px;
+}
+.character-row-3 .white-window-container {   
+   /* padding: 25px 0; */
+   overflow: hidden;
+   display: flex;
+}
+.product-description {
+   font-size: .85em;
+   margin-top: 4px;
+   height: 0px;
+   overflow: auto;
+   padding: 25px;
+}
+.product-description-container .default-product-data {
+   height: 30px;
 }

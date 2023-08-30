@@ -31,12 +31,15 @@
 /* =================== */
 /* ===== BUTTONS ===== */
 /* =================== */
-.btn-primary {
+
+.btn-primary, .btn-secondary {
    padding: 0;
-   /* background: none; */
    border: none;
    outline: none;
+   background-color: none;
 }
+
+/* Primary Button */
 .btn-primary a {
    padding: 6px 12px;
    position: relative;
@@ -70,6 +73,29 @@
 .btn-primary-focus-bg > a:focus {
    box-shadow: inset 2px 2px 0px var(--black), inset -2px -2px 0px var(--white);
    background: url('../../assets/img/elem-parts/btn-focus-bg.svg');
+}
+
+/* Primary Secondary */
+.btn-secondary a {
+   padding: 6px 12px;
+   position: relative;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   gap: 6px;
+   text-decoration: none;
+   color: var(--white);
+   background-color: var(--navy-blue);
+   box-shadow: inset -2px -2px 0px var(--black), inset -4px -4px 0px #050A2D, inset 2px 2px 0px var(--white);
+}
+.btn-secondary a:hover {
+   filter: brightness(.9);
+}
+.btn-secondary img {
+   height: 85%;
+}
+.btn-link {
+   cursor: pointer;
 }
 
 
@@ -211,7 +237,7 @@ background: var(--grey-darker);
 /* ===== SHOP ===== */
 /* ================ */
 
-.content-chontainer {
+.content-container {
    display: grid;
    grid-template-columns: repeat(2, 1fr);
    gap: 20px;
@@ -223,7 +249,7 @@ background: var(--grey-darker);
    justify-items: center;
    width: clamp(300px, 95%, 1300px);
 }
-.no-scrollbar-chontainer::-webkit-scrollbar {
+.no-scrollbar-container::-webkit-scrollbar {
    display: none;
 }
 
@@ -267,7 +293,8 @@ background: var(--grey-darker);
 }
 
 /* product image */
-.default-product-image-container {
+.white-window-container {
+   display: block;
    background: var(--white);
    width: 100%;
    height: 100%;

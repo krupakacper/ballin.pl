@@ -36,9 +36,9 @@
    <!------- PRODUCT DETAILS -------->
    <!-------------------------------->
 
-   <div class="content-chontainer no-scrollbar-chontainer">
+   <div class="content-container no-scrollbar-chontainer">
 
-      <!-- product -->
+      <!-- product (images) -->
       <div class="window-container big">
 
          <div class="window-container-topbar">
@@ -48,7 +48,7 @@
             <img class="window-container-close-icon" src="assets/img/icons/close-small.svg" alt="Ikonka zamknij">
          </div>
 
-         <div class="default-product-image-container">
+         <div class="white-window-container">
 
          </div>
          <div class="default-product-data">
@@ -58,9 +58,10 @@
 
       </div>
 
-      <!-- details -->
-      <div class="window-container big">
+      <!-- details (character.exe) -->
+      <div class="window-container big character-exe">
 
+         <!-- topbar -->
          <div class="window-container-topbar">
             <div class="window-container-topbar-left">
                <img class="window-container-icon" src="assets/img/icons/character-icon.svg" alt="Ikonka produktu">
@@ -72,13 +73,17 @@
 
          <div class="character-data-container">
 
+
+            <!-- row 1 -->
             <div class="character-row-1">
                name.surname
             </div>
 
-            <div class="character-row-2">
-               <div class="character-prof">
 
+            <!-- row 2 -->
+            <div class="character-row-2">
+
+               <div class="character-prof">
                </div>
                <div class="character-details">
                   <div class="character-prices">
@@ -87,19 +92,49 @@
                      <span>Apiece</span>
                   </div>
                   <div class="character-buttons">
-                     <div class="btn-primary">
-                        XS/S/M/L/XL
-                     </div>
-                     <div class="btn-secondary">
-                        Add to cart
-                     </div>
+                     <button class="btn-primary">
+                        <a href="#">XS/S/M/L/XL</a>
+                     </button>
+                     <button class="btn-secondary">
+                        <a href="#">Add to cart</a>
+                     </button>
+                  </div>
+               </div>
+
+            </div>
+
+
+            <!-- row 3 -->
+            <div class="character-row-3">
+
+               <div class="character-buttons">
+                  <button class="btn-primary btn-primary-focus-bg">
+                     <a href="#">Opis</a>
+                  </button>
+                  <button class="btn-primary btn-primary-focus-bg">
+                     <a href="#">Rozmiary</a>
+                  </button>
+                  <button class="btn-primary btn-primary-focus-bg">
+                     <a href="#">Dostawa</a>
+                  </button>
+                  <button class="btn-primary btn-primary-focus-bg">
+                     <a href="#">Zwrot</a>
+                  </button>
+               </div>
+
+               <div class="product-description-container">
+                  <div class="white-window-container">
+                     <p class="product-description">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas lacus ex, pretium sit amet felis sed, fringilla cursus lacus. Nam aliquam finibus porta. Pellentesque sit amet pulvinar eros. Pellentesque vehicula porta urna. Suspendisse velit nunc, porta quis ullamcorper ut, dignissim et nisl. In posuere purus felis, sed cursus ipsum iaculis at. Nunc et porta tellus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean sagittis diam vitae dui vestibulum dignissim. Nulla ornare velit eget elit placerat, non viverra nunc consectetur. Praesent eu viverra turpis. Vivamus sed diam quis nulla malesuada porttitor sed a est. Ut vitae ex laoreet, congue est id, lacinia massa. Sed laoreet sagittis congue. Integer sit amet elementum ipsum, at consectetur est. Nullam sed lobortis ex. In hac habitasse platea dictumst. Aliquam porta sagittis velit, ac consectetur lectus tempus ut. Duis iaculis iaculis nibh nec tristique. Nullam suscipit dui augue, vel rhoncus magna ultrices non. Aenean nisi diam, cursus ut nisl sit amet, accumsan varius justo. Nam at tellus vitae dolor varius imperdiet. In hendrerit eget ligula id tempus. Vestibulum non lobortis elit. Nullam eget pulvinar nisi. Curabitur a lacus tempor, auctor arcu sit amet, semper purus. Integer in diam varius, bibendum libero et, commodo ipsum. Quisque facilisis sagittis orci, in scelerisque lectus porta eget. In semper enim aliquam enim eleifend pharetra. Nunc accumsan, ex in consectetur convallis, lacus odio iaculis dolor, quis pharetra risus justo in est. Interdum et malesuada fames ac ante ipsum primis in faucibus. Suspendisse sit amet mattis risus, ac sollicitudin leo. Vivamus fringilla odio in bibendum scelerisque. Donec ac neque libero. Sed dignissim ligula in mattis congue. Fusce et lacus imperdiet, interdum libero in, ultricies risus. Duis eu nisl eu ipsum blandit convallis. Donec molestie, ante et rutrum vulputate, sem ligula consectetur libero, nec aliquam diam tortor nec magna. Vivamus commodo finibus odio. Nulla quis urna et elit eleifend cursus. Proin eu tortor tempor, ultrices lacus ut, dignissim turpis. Fusce justo ipsum, mollis quis rhoncus vel, convallis ut nisl. Sed condimentum eleifend elit id fermentum.
+                     </p>
+                  </div> 
+                  <div class="default-product-data">
+                     <div class="default-product-quantity"></div>
+                     <div class="default-product-price"><img class="corner" src="assets/img/elem-parts/corner.svg"></div>
                   </div>
                </div>
             </div>
 
-            <div class="character-row-3">
-               
-            </div>
 
          </div>
 
@@ -151,6 +186,15 @@
 
 
 <script src="assets/js/main.js"></script>
+<script>
+   const description = document.querySelector('.product-description');
+   const descriptionContainer = document.querySelector('.product-description-container .white-window-container');
+
+   let containerHeight = descriptionContainer.clientHeight;
+   let descriptionHeight = containerHeight - 10;
+
+   description.style.height = descriptionHeight + 'px';
+</script>
 
 </body>
 </html>

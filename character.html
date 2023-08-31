@@ -25,10 +25,29 @@
       <span>Menu</span>
    </div>
       
-   <div class="desktop-folder cart-folder">
+   <div class="desktop-folder cart-folder" id="cart-folder">
       <img class="cart-desktop-folder" src="assets/img/elem-parts/cart-empty.svg" alt="Ikonka pustego koszyka">
       <span>Orders</span>
    </div>
+
+   <!-- empty cart warning -->
+   <dialog id="empty-cart-modal">
+      <div class="window-container-topbar">
+         <div class="window-container-topbar-left">
+            Warning
+         </div>
+         <button class="window-container-close-icon" id="close-empty-cart-modal">
+            <img src="assets/img/icons/close-small.svg" alt="Ikonka zamknij">
+         </button>
+      </div>
+      <div class="empty-cart-modal-content">
+         <p>
+            <img src="assets/img/icons/access-denied-icon.svg" alt="Ikonka odmowy dostępu">
+            Access is denied. Your cart is empty.
+         </p>
+         <button class="btn-primary" id="close-empty-cart-modal">OK</button>
+      </div>
+   </dialog>
 
 
 
@@ -36,29 +55,84 @@
    <!------- PRODUCT DETAILS -------->
    <!-------------------------------->
 
-   <div class="content-container no-scrollbar-chontainer">
+   <div class="content-container no-scrollbar-container">
 
-      <!-- product (images) -->
-      <div class="window-container big">
+      <!-- Products (images) -->
+      <div class="products-boxes">
 
-         <div class="window-container-topbar">
-            <div class="window-container-topbar-left">
-               <img class="window-container-icon" src="assets/img/icons/clothes/t-shirt-violet.svg" alt="Ikonka produktu">
+
+         <!-- Current product -->
+         <div class="window-container big">
+
+            <div class="window-container-topbar">
+               <div class="window-container-topbar-left">
+                  <img class="window-container-icon" src="assets/img/icons/clothes/t-shirt-yellow.svg" alt="Ikonka produktu">
+               </div>
+               <!-- <img class="window-container-close-icon" src="assets/img/icons/close-small.svg" alt="Ikonka zamknij"> -->               
+               <button class="window-container-close-icon">
+                  <img src="assets/img/icons/close-small.svg" alt="Ikonka zamknij">
+               </button>
             </div>
-            <img class="window-container-close-icon" src="assets/img/icons/close-small.svg" alt="Ikonka zamknij">
+
+            <div class="white-window-container">
+
+            </div>
+            <div class="default-product-data">
+               <div class="default-product-quantity">available</div>
+               <div class="default-product-price">289 PLN<img class="corner" src="assets/img/elem-parts/corner.svg"></div>
+            </div>
+
          </div>
 
-         <div class="white-window-container">
+
+         <!-- Related products -->
+         <div class="related-products">
+
+            <div class="window-container big">
+
+               <div class="window-container-topbar">
+                  <div class="window-container-topbar-left">
+                     <img class="window-container-icon" src="assets/img/icons/clothes/cap-blue.svg" alt="Ikonka produktu">
+                  </div>
+                  <img class="window-container-close-icon" src="assets/img/icons/close-small.svg" alt="Ikonka zamknij">
+               </div>
+   
+               <div class="white-window-container">
+   
+               </div>
+               <div class="default-product-data">
+                  <div class="default-product-quantity">available</div>
+                  <div class="default-product-price">149 PLN<img class="corner" src="assets/img/elem-parts/corner.svg"></div>
+               </div>
+   
+            </div>
+
+            <div class="window-container big">
+
+               <div class="window-container-topbar">
+                  <div class="window-container-topbar-left">
+                     <img class="window-container-icon" src="assets/img/icons/clothes/hoodie-red.svg" alt="Ikonka produktu">
+                  </div>
+                  <img class="window-container-close-icon" src="assets/img/icons/close-small.svg" alt="Ikonka zamknij">
+               </div>
+   
+               <div class="white-window-container">
+   
+               </div>
+               <div class="default-product-data">
+                  <div class="default-product-quantity">available</div>
+                  <div class="default-product-price">429 PLN<img class="corner" src="assets/img/elem-parts/corner.svg"></div>
+               </div>
+   
+            </div>
 
          </div>
-         <div class="default-product-data">
-            <div class="default-product-quantity">available</div>
-            <div class="default-product-price">300 PLN<img class="corner" src="assets/img/elem-parts/corner.svg"></div>
-         </div>
+
 
       </div>
 
-      <!-- details (character.exe) -->
+      
+      <!-- Details (character.exe) -->
       <div class="window-container big character-exe">
 
          <!-- topbar -->
@@ -93,10 +167,10 @@
                   </div>
                   <div class="character-buttons">
                      <button class="btn-primary">
-                        <a href="#">XS/S/M/L/XL</a>
+                        XS/S/M/L/XL
                      </button>
                      <button class="btn-secondary">
-                        <a href="#">Add to cart</a>
+                        Add to cart
                      </button>
                   </div>
                </div>
@@ -107,26 +181,46 @@
             <!-- row 3 -->
             <div class="character-row-3">
 
-               <div class="character-buttons">
-                  <button class="btn-primary btn-primary-focus-bg">
-                     <a href="#">Opis</a>
-                  </button>
-                  <button class="btn-primary btn-primary-focus-bg">
-                     <a href="#">Rozmiary</a>
-                  </button>
-                  <button class="btn-primary btn-primary-focus-bg">
-                     <a href="#">Dostawa</a>
-                  </button>
-                  <button class="btn-primary btn-primary-focus-bg">
-                     <a href="#">Zwrot</a>
-                  </button>
+               <div class="character-buttons character-info-tabs-buttons">
+                  <button class="btn-primary">Opis</button>
+                  <button class="btn-primary">Rozmiary</button>
+                  <button class="btn-primary">Dostawa</button>
+                  <button class="btn-primary">Zwrot</button>
                </div>
 
-               <div class="product-description-container">
+               <!-- white text box for product info -->
+               <div class="product-info-container">
                   <div class="white-window-container">
-                     <p class="product-description">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas lacus ex, pretium sit amet felis sed, fringilla cursus lacus. Nam aliquam finibus porta. Pellentesque sit amet pulvinar eros. Pellentesque vehicula porta urna. Suspendisse velit nunc, porta quis ullamcorper ut, dignissim et nisl. In posuere purus felis, sed cursus ipsum iaculis at. Nunc et porta tellus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean sagittis diam vitae dui vestibulum dignissim. Nulla ornare velit eget elit placerat, non viverra nunc consectetur. Praesent eu viverra turpis. Vivamus sed diam quis nulla malesuada porttitor sed a est. Ut vitae ex laoreet, congue est id, lacinia massa. Sed laoreet sagittis congue. Integer sit amet elementum ipsum, at consectetur est. Nullam sed lobortis ex. In hac habitasse platea dictumst. Aliquam porta sagittis velit, ac consectetur lectus tempus ut. Duis iaculis iaculis nibh nec tristique. Nullam suscipit dui augue, vel rhoncus magna ultrices non. Aenean nisi diam, cursus ut nisl sit amet, accumsan varius justo. Nam at tellus vitae dolor varius imperdiet. In hendrerit eget ligula id tempus. Vestibulum non lobortis elit. Nullam eget pulvinar nisi. Curabitur a lacus tempor, auctor arcu sit amet, semper purus. Integer in diam varius, bibendum libero et, commodo ipsum. Quisque facilisis sagittis orci, in scelerisque lectus porta eget. In semper enim aliquam enim eleifend pharetra. Nunc accumsan, ex in consectetur convallis, lacus odio iaculis dolor, quis pharetra risus justo in est. Interdum et malesuada fames ac ante ipsum primis in faucibus. Suspendisse sit amet mattis risus, ac sollicitudin leo. Vivamus fringilla odio in bibendum scelerisque. Donec ac neque libero. Sed dignissim ligula in mattis congue. Fusce et lacus imperdiet, interdum libero in, ultricies risus. Duis eu nisl eu ipsum blandit convallis. Donec molestie, ante et rutrum vulputate, sem ligula consectetur libero, nec aliquam diam tortor nec magna. Vivamus commodo finibus odio. Nulla quis urna et elit eleifend cursus. Proin eu tortor tempor, ultrices lacus ut, dignissim turpis. Fusce justo ipsum, mollis quis rhoncus vel, convallis ut nisl. Sed condimentum eleifend elit id fermentum.
-                     </p>
+                     <div class="product-info">
+                        
+                        <!-- description tab -->
+                        <div class="product-info-content product-description">
+                           <p>
+                              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque nec neque nec nisl tempus consequat. Sed eget sapien vestibulum, aliquam felis ac, pulvinar nulla. Morbi pretium semper nunc, nec luctus sem sodales ut. Curabitur a posuere odio. Nam porta volutpat lacinia. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Pellentesque vel dignissim diam. Donec eu dui in augue elementum feugiat non nec elit. Integer aliquam, metus id consectetur viverra, enim dolor elementum ipsum, ac tincidunt nisi dui vitae enim. Donec tempus, sapien nec sodales elementum, augue nisl feugiat felis, quis blandit eros odio vel tellus. Maecenas lobortis dolor quis velit hendrerit, eu fringilla purus pellentesque. Nunc molestie est ut est finibus congue. Curabitur at tortor erat. Nulla faucibus, sem a scelerisque elementum, quam ligula maximus enim, quis finibus dui urna ut orci. In vitae tortor laoreet, cursus risus nec, dictum nulla. Nullam interdum elit a tellus faucibus placerat. Aliquam non justo eget felis luctus molestie vitae vel nisi. Curabitur in dui feugiat, porta urna sed, placerat augue. Nunc ac odio ullamcorper, finibus diam feugiat, tempor turpis. Maecenas non ipsum blandit, bibendum leo eget, ornare libero. Suspendisse potenti. Etiam vitae tortor tempus, malesuada libero ac, sodales nisl. Quisque volutpat turpis sit amet commodo placerat.
+                           </p>
+                        </div>
+                        
+                        <!-- sizes tab -->
+                        <div class="product-info-content product-sizes">
+                           <img src="assets/img/graphics/sizes-table.svg" alt="Tabela rozmiarów">
+                           <img src="assets/img/graphics/sizes-measure.svg" alt="Instrukcja pomiaru wymiarów">
+                        </div>
+                        
+                        <!-- shipping tab -->
+                        <div class="product-info-content product-shipping">
+                           <p>Paczkomat InPost</p>
+                           <p>Kurier DPD</p>
+                           <p>Kurier DHL</p>
+                        </div>
+                        
+                        <!-- return tab -->
+                        <div class="product-info-content product-return">
+                           <p>
+                              Etiam tempor accumsan nisl, non bibendum dolor rhoncus sed. Suspendisse porttitor mi eu viverra fermentum. Curabitur lobortis massa in dolor hendrerit cursus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Vivamus pharetra tellus ante, vel tempor est imperdiet et. Aenean ornare sem velit, in tempus massa rhoncus quis. Fusce convallis velit lacinia, malesuada mauris vitae, commodo felis. Sed mauris urna, ultrices nec mattis nec, maximus in risus. Sed venenatis, lorem et vehicula auctor, lacus magna pellentesque odio, eu varius libero ligula id ex. Maecenas tempor libero ac magna ultricies condimentum. Vestibulum ac lacinia nulla. Nam a sollicitudin risus. Fusce dui augue, porttitor eget purus a, maximus dictum leo.
+                           </p>
+                        </div>
+                        
+                     </div>
                   </div> 
                   <div class="default-product-data">
                      <div class="default-product-quantity"></div>
@@ -153,7 +247,8 @@
       <nav class="footer-menu">
          <div class="menu-start">  
             <!-- Main menu -->
-            <button type="button" class="menu-start-item btn-primary footer-elem btn-primary-click-bg"><a id="menu-start-btn" class="btn-link" href="#"><img src="assets/img/icons/menu icons/start-icon.svg" alt="Ikonka menu start">START</a>
+            <button type="button" id="menu-start-btn" class="menu-start-item btn-primary footer-elem btn-primary-click-bg">
+               <img src="assets/img/icons/menu icons/start-icon.svg" alt="Ikonka menu start">START
             </button>
             <!-- Main menu submenu -->
             <div class="menu-start-submenu-container">
@@ -170,8 +265,16 @@
                </nav>
             </div>
             <!-- Social links -->
-            <button class="menu-start-item btn-primary footer-elem btn-primary-active-bg"><a class="btn-link" href="https://www.facebook.com/ballinmob" target="_blank"><img src="assets/img/icons/menu icons/facebook-icon.svg" alt="Ikonka facebook">FACEBOOK</a></button>
-            <button class="menu-start-item btn-primary footer-elem btn-primary-active-bg"><a class="btn-link" href="https://www.instagram.com/ballin.pl/" target="_blank"><img src="assets/img/icons/menu icons/instagram-icon.svg" alt="Ikonka instagram">INSTAGRAM</a></button>
+            <button class="menu-start-item btn-primary footer-elem btn-primary-active-bg">
+               <a class="btn-link" href="https://www.facebook.com/ballinmob" target="_blank">
+                  <img src="assets/img/icons/menu icons/facebook-icon.svg" alt="Ikonka facebook">FACEBOOK
+               </a>
+            </button>
+            <button class="menu-start-item btn-primary footer-elem btn-primary-active-bg">
+               <a class="btn-link" href="https://www.instagram.com/ballin.pl/" target="_blank">
+                  <img src="assets/img/icons/menu icons/instagram-icon.svg" alt="Ikonka instagram">INSTAGRAM
+               </a>
+            </button>
 
          </div>
       </nav>
@@ -185,16 +288,12 @@
 </div>
 
 
+<!-- Default JS -->
+<script src="assets/js/jquery.js"></script>
 <script src="assets/js/main.js"></script>
-<script>
-   const description = document.querySelector('.product-description');
-   const descriptionContainer = document.querySelector('.product-description-container .white-window-container');
 
-   let containerHeight = descriptionContainer.clientHeight;
-   let descriptionHeight = containerHeight - 10;
-
-   description.style.height = descriptionHeight + 'px';
-</script>
+<!-- Additional JS -->
+<script src="assets/js/product.js"></script>
 
 </body>
 </html>

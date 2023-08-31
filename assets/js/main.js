@@ -13,6 +13,8 @@ menuStartBtn.addEventListener('click', () => {
    }
 });
 
+
+
 // add button background after click
 const primaryBtns = document.querySelectorAll('.btn-primary-click-bg');
 
@@ -28,3 +30,21 @@ primaryBtns.forEach((btn) => {
       }
    });
 });
+
+
+
+// empty cart warning modal
+const cartFolder = document.querySelector('#cart-folder');
+const emptyCartModal = document.querySelector('#empty-cart-modal');
+const emptyCartModalCloseBtn = document.querySelectorAll('#close-empty-cart-modal');
+
+cartFolder.addEventListener('click', () => {
+   emptyCartModal.showModal();
+});
+
+emptyCartModalCloseBtn.forEach( (btn) => {
+   btn.addEventListener('click', () => {
+      emptyCartModal.close();
+   });
+});
+

@@ -25,6 +25,10 @@
    font-family: Sysfont;
 }
 
+body {
+   background-color: var(--grey-primary);
+}
+
 
 
 
@@ -385,15 +389,18 @@ background: var(--grey-darker);
 .footer-toolbar {
    background: var(--grey-primary);
    width: 100%;
-   height: 50px;
    position: absolute;
-   bottom: 0;
+   bottom: 53px;
    left: 0;
-   padding: 6px 5px 10px;
+   padding: 6px 5px 8px;
    display: flex;
    justify-content: space-between;
    align-items: center;
    border-top: 2px solid white;
+   flex-wrap: wrap;
+   gap: 5px;
+   z-index: 100;
+   transform: translateY(100%);
 }
 .footer-elem a {
    height: 100% !important;
@@ -404,6 +411,7 @@ background: var(--grey-darker);
    display: flex;
    list-style-type: none;
    gap: 15px;
+   flex-wrap: wrap;
 }
 
 /* submenu */
@@ -479,7 +487,7 @@ background: var(--grey-darker);
    align-items: center;
    justify-content: center;
    position: relative;
-   height: calc(100% + 5px);
+   height: 37px;
    box-shadow: inset 2px 2px 0px var(--grey-darker), inset -2px -2px 0px var(--white);
    font-size: 1.15rem;
 }
@@ -498,20 +506,98 @@ background: var(--grey-darker);
 
 @media(max-width: 900px) {
 
+   /* =================== */
+   /* ===== BUTTONS ===== */
+   /* =================== */
+   
+   .btn-primary, .btn-secondary {
+      padding: 4px 10px;
+      gap: 5px;
+      font-size: 1.1em;
+   }
+   .btn-primary img, .btn-secondary img {
+      height: 80%;
+   }
+   .btn-primary a, .btn-secondary a {
+      gap: 5px;
+   }
+
+
+
+
+   /* =================== */
+   /* ===== DESKTOP ===== */
+   /* =================== */
+   
+   .desktop {
+      background: var(--wallpaper);
+      width: 100%;
+      height: calc(100vh - 49px);
+      display: flex;
+      justify-content: center;
+      align-items: start;
+   }
+
+
+   
+
    /* ========================== */
    /* ===== DEFAULT WINDOW ===== */
    /* ========================== */
 
    .content-container {
       grid-template-columns: 1fr;
-      gap: 20px;
-      margin-top: 25px;
-      height: 75vh;
-      overflow-y:auto ;
-      position: relative;
-      z-index: 10;
-      justify-items: center;
-      width: clamp(300px, 60%, 1300px);
+      height: calc(100vh - 275px);
+      width: clamp(310px, 65%, 1300px);
+      margin-top: 125px;
+   }
+
+
+
+
+   /* ================== */
+   /* ===== FOOTER ===== */
+   /* ================== */
+   
+   .footer-toolbar {
+      padding: 6px 5px 8px;
+      bottom: 49px;
+   }
+
+   /* MAIN MENU */
+   .menu-start {
+      display: flex;
+      list-style-type: none;
+      gap: 5px;
+   }
+   .menu-start-item {
+      height: 33px;
+   }
+
+   /* submenu */   
+   .menu-stripe {
+      padding: 8px 1px 8px 2px;
+   }
+   .menu-stripe p {
+      font-size: 1.5rem;
+   }
+   
+   .menu-start-submenu {
+      padding: 10px 7px 10px 0px;
+   }
+   .menu-start-submenu-item a {
+      gap: 10px;
+      font-size: 1.125rem;
+   }
+   .menu-start-submenu-item img {
+      width: 40px;
+   }
+
+   /* Clock */
+   .clock {
+      padding: 4px 12px;
+      height: 33px;
+      font-size: 1.1rem;
    }
 
 }

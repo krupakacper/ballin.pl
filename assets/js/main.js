@@ -47,4 +47,3 @@ emptyCartModalCloseBtn.forEach( (btn) => {
       emptyCartModal.close();
    });
 });
-

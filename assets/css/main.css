@@ -278,7 +278,7 @@ background: var(--grey-darker);
    position: relative;
    z-index: 10;
    justify-items: center;
-   width: clamp(300px, 95%, 1300px);
+   width: clamp(300px, 75%, 1300px);
 }
 .no-scrollbar-container::-webkit-scrollbar {
    display: none;
@@ -485,17 +485,33 @@ background: var(--grey-darker);
 }
 
 
-/* 
+
+
+
+
+
+
+/* --------=======================-------- */
+/* -----======= MOBILE STYLES =======----- */
+/* --------=======================-------- */
+
+
 @media(max-width: 900px) {
-   .shop-app-products-container {
-      grid-template-columns: repeat(1, 1fr);
+
+   /* ========================== */
+   /* ===== DEFAULT WINDOW ===== */
+   /* ========================== */
+
+   .content-container {
+      grid-template-columns: 1fr;
       gap: 20px;
-      padding: 20px;
       margin-top: 25px;
-      height: 60vh;
+      height: 75vh;
+      overflow-y:auto ;
+      position: relative;
+      z-index: 10;
+      justify-items: center;
+      width: clamp(300px, 60%, 1300px);
    }
-   .default-product {
-      max-width: 600px;
-      height: 350px;
-   }
-} */
+
+}

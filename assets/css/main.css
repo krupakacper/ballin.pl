@@ -301,8 +301,19 @@ background: var(--grey-darker);
    background: var(--grey-primary);
    aspect-ratio: 1/.8;
 }
-.window-container.big{
+.window-container.big {
    font-size: 1rem;
+}
+/* small windows from product site */
+.window-container.small {
+   font-size: .9rem;
+}
+.window-container.small .window-container-icon {
+   width: 26px;
+}
+.window-container.small .window-container-close-icon {
+   width: 24px;
+   height: 24px;
 }
 
 .window-container-topbar {
@@ -366,10 +377,10 @@ background: var(--grey-darker);
    box-shadow: inset 1px 1px 0px var(--grey-darker), inset -1px -1px 0px var(--white);
 }
 .default-product-quantity {
-   width: 60%;
+   width: 55%;
 }
 .default-product-price {
-   width: 40%;
+   width: 45%;
    position: relative;
 }
 .corner {

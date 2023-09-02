@@ -15,6 +15,17 @@
 
 
 
+/* ========================== */
+/* ===== DEFAULT WINDOW ===== */
+/* ========================== */
+
+.content-container:has(.products-boxes) {
+   grid-template-columns: calc(42.5% - 10px)  calc(57.5% - 10px);
+   width: clamp(300px, 82.5%, 1300px);
+}
+
+
+
 
 /* ==================== */
 /* ===== PRODUCTS ===== */
@@ -132,8 +143,49 @@
    justify-content: center;
    gap: 15px;
 }
+.sizes-table {
+   width: 35%;
+}
+.sizes-measure {
+   width: 45%;
+}
 /* shipping */
 .product-shipping {
    gap: 10px;
    flex-direction: column;
+}
+
+
+
+
+
+
+
+
+/* --------=======================-------- */
+/* -----======= MOBILE STYLES =======----- */
+/* --------=======================-------- */
+
+
+@media(max-width: 1400px) {
+
+   /* ========================= */
+   /* ===== CHARACTER.EXE ===== */
+   /* ========================= */
+   .character-data-container {
+      font-size: 1.25rem;
+   }
+
+}
+
+
+@media(max-width: 1100px) {
+
+   /* ========================= */
+   /* ===== CHARACTER.EXE ===== */
+   /* ========================= */
+   .character-data-container {
+      font-size: 1.125rem;
+   }
+
 }

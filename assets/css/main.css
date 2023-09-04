@@ -539,6 +539,7 @@ background: var(--grey-darker);
       height: calc(100vh - 275px);
       width: clamp(310px, 65%, 1300px);
       margin-top: 125px;
+      gap: 35px;
    }
 
 

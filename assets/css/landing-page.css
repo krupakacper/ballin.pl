@@ -51,20 +51,20 @@ body {
 }
 .landing-btn-toggle {
    position: absolute;
-   top: 2px;
-   left: 2px;
+   top: -9px;
+   left: -9px;
    display: block;
-   height: 36px;
-   width: 36px;
+   height: 58px;
+   width: 58px;
    border-radius: 150px;
-   background-color: var(--white);
-   /* background-image: url('../../assets/img/icons/landing-button.svg');
-   background-size: cover; */
+   /* background-color: var(--white); */
+   background-image: url('../../assets/img/icons/landing-button-active.svg');
+   background-size: cover;
    transition: all .25s ease;
 }
 .landing-btn-toggle.active {
-   left: calc(100% - 38px);
-   /* background-image: url('../../assets/img/icons/landing-button-active.svg'); */
+   left: calc(100% - 49px);
+   background-image: url('../../assets/img/icons/landing-button.svg');
 }
 .landing-btn:has(.landing-btn-toggle.active) {
    background-color: var(--grey-darker);
@@ -78,7 +78,7 @@ body {
 /* ======================== */
 
 .landing-page-container {
-   width: 110%;
+   width: 100%;
    max-width: 850px;
    background-size: cover;
    display: flex;
@@ -87,7 +87,6 @@ body {
    flex-direction: column;
    gap: 32px;
    margin: 25px auto 0;
-   transform: translateX(-5%);
 }
 .landing-page-img {
    width: 100%;
@@ -134,11 +133,13 @@ body {
       height: 32px;
    }
    .landing-btn-toggle {
-      height: 30px;
-      width: 30px;
+      top: -7px;
+      left: -7px;
+      height: 47px;
+      width: 47px;
    }
    .landing-btn-toggle.active {
-      left: calc(100% - 31px);
+      left: calc(100% - 40px);
    }
 
 

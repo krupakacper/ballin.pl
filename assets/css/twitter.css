@@ -1,0 +1,126 @@
+/* ============================= */
+/* ===== VARIABLES & SETUP ===== */
+/* ============================= */
+
+:root {
+   --white: #fff;
+   --black: #0A0A0A;
+   --almost-black: #191919;
+   --grey-primary: #B4B4B4;
+   --grey-brigter: #C0C0C0;
+   --grey-darker: #808080;
+   --grey-more-darker: #656565;
+   --grey-ultra-dark: #3B3B3B;
+   --navy-blue: #06157F;
+   --wallpaper: #008081;
+}
+
+
+
+
+/* =================== */
+/* ===== TWITTER ===== */
+/* =================== */
+
+.content-container-twitter {
+   display: grid;
+   grid-template-columns: repeat(3, 1fr);
+   gap: 2%;
+   margin-top: 25px;
+   height: 75vh;
+   overflow-y:auto ;
+   position: relative;
+   z-index: 10;
+   justify-items: center;
+   width: clamp(300px, 75%, 1300px);
+}
+.twitter-post {
+   background-color: var(--black);
+   width: 100%;
+   aspect-ratio: 4/5;
+   color: var(--white);
+   padding: 25px;
+   box-shadow: inset 0 0 0px 1px var(--grey-ultra-dark), inset -2px -2px 0px 0px var(--grey-more-darker), inset 2px 2px 0px 0px var(--almost-black);
+}
+
+/* Topbar */
+.twitter-post-topbar {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+}
+.twitter-profile-img {
+   width: 55px;
+   aspect-ratio: 1/1;
+   background-color: var(--grey-brigter);
+   border-radius: 50%;
+}
+.twitter-more-dots {
+   width: 20px;
+}
+.twitter-post-img {
+   display: block;
+   width: 85%;
+   margin: 20px auto;
+   aspect-ratio: 1/1.05;
+   background-color: var(--white);   
+   box-shadow: inset -1px -1px var(--white), inset -2px -2px var(--grey-primary), inset -3px -3px var(--grey-darker), inset 1px 1px var(--grey-darker), inset 2px 2px 0px var(--black);
+}
+.twitter-post-footer {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   width: 85%;
+   margin: 30px auto 0;
+}
+.twitter-footer-col {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   gap: 5px;
+}
+.twitter-footer-col img {
+   width: 32px;
+}
+
+
+
+
+
+
+
+
+/* --------=======================-------- */
+/* -----======= MOBILE STYLES =======----- */
+/* --------=======================-------- */
+
+
+@media(max-width: 1300px) {
+
+   /* =================== */
+   /* ===== TWITTER ===== */
+   /* =================== */
+
+   .content-container-twitter {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 6%;
+   }
+
+}
+
+
+@media(max-width: 900px) {
+
+   /* =================== */
+   /* ===== TWITTER ===== */
+   /* =================== */
+
+   .content-container-twitter {
+      grid-template-columns: 1fr;
+      gap: 6%;    
+      height: calc(100vh - 275px);
+      margin-top: 125px;
+      width: clamp(300px, 50%, 1300px);  
+   }
+
+}

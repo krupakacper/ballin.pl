@@ -1,11 +1,11 @@
 // Set height of product info container
-const info = document.querySelector('.product-info');
+const infoArea = document.querySelector('.product-info');
 const infoContainer = document.querySelector('.product-info-container .white-window-container');
 
-let containerHeight = infoContainer.clientHeight;
-let infoHeight = containerHeight - 10;
+let containerHeight = infoContainer.clientHeight;  //get the container height
+let infoHeight = containerHeight - 10;             //set the info area height same as the container - 10px
 
-info.style.height = infoHeight + 'px';
+infoArea.style.height = infoHeight + 'px';         //set new info area height
 
 // Product info tabs switch
 $('.character-info-tabs-buttons button').click(function(event) {

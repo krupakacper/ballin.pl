@@ -20,7 +20,8 @@
 /* ========================== */
 
 .content-container:has(.products-boxes) {
-   grid-template-columns: calc(42.5% - 10px)  calc(57.5% - 10px);
+   grid-template-columns: calc(42.5% - 37.5px)  calc(57.5% - 37.5px);
+   grid-template-columns: 1fr 1fr;
    width: clamp(300px, 82.5%, 1300px);
 }
 
@@ -81,7 +82,7 @@
    justify-content: flex-end;
    align-items: center;
    width: 100%;
-   padding-inline: 26px;
+   padding-left: 32px;
    gap: 20px;
 }
 .character-prices {
@@ -98,6 +99,8 @@
 .character-buttons .btn-primary, .character-buttons .btn-secondary {
    font-size: .9em;
    width: 100%;
+   padding-top: 8px;
+   padding-bottom: 8px;
 }
 
 /* product info */
@@ -119,7 +122,7 @@
    gap: 3px;
 }
 .character-row-3 .white-window-container {   
-   /* padding: 25px 0; */
+   min-height: 200px;
    overflow: hidden;
    display: flex;
 }
@@ -130,9 +133,10 @@
    width: 100%;
    overflow: auto;
    padding: 25px;
+   min-height: 250px;
 }
 .product-info-container .default-product-data {
-   height: 30px;
+   height: 40px;
 }
 .product-info-content {
    display: none;
@@ -167,7 +171,28 @@
 /* --------=======================-------- */
 
 
+@media(max-width: 1550px) {
+
+   /* ==================== */
+   /* ===== PRODUCTS ===== */
+   /* ==================== */
+
+   .related-products {
+      gap: 5px;
+   }
+   .window-container.small {
+      font-size: .75rem;
+   }
+
+}
+
+
 @media(max-width: 1400px) {
+
+   .content-container:has(.products-boxes) {
+      gap: 50px;
+      width: clamp(300px, 85%, 1300px);
+   }
 
    /* ========================= */
    /* ===== CHARACTER.EXE ===== */
@@ -181,11 +206,120 @@
 
 @media(max-width: 1100px) {
 
+   .content-container:has(.products-boxes) {
+      gap: 30px;
+   }
+
    /* ========================= */
    /* ===== CHARACTER.EXE ===== */
    /* ========================= */
    .character-data-container {
       font-size: 1.125rem;
+   }
+   .character-row-2 {
+      display: flex;
+      padding: 10px 15px 65px;
+      box-shadow: inset 0px -2px 0px var(--white), inset 0px -4px 0px var(--grey-darker), inset 0px -6px 0px var(--black);
+  }
+  .character-details {
+      display: flex;
+      height: initial;
+      flex-direction: column;
+      justify-content: flex-end;
+      align-items: center;
+      width: 100%;
+      padding-left: 24px;
+      gap: 20px;
+   }
+
+}
+
+
+@media(max-width: 900px) {
+
+   /* ========================== */
+   /* ===== DEFAULT WINDOW ===== */
+   /* ========================== */
+
+   .content-container:has(.products-boxes) {
+      display: flex;
+      flex-direction: column;
+      width: clamp(300px, 70%, 1300px);
+   }
+
+   .products-boxes .window-container.big {
+      width: 92.5%;
+      margin: 0 auto;
+   }
+
+   /* ========================= */
+   /* ===== CHARACTER.EXE ===== */
+   /* ========================= */
+   .character-data-container {
+      font-size: 1.25rem;
+   }
+
+}
+
+
+@media(max-width: 700px) {
+
+   /* ========================== */
+   /* ===== DEFAULT WINDOW ===== */
+   /* ========================== */
+
+   .content-container:has(.products-boxes) {
+      width: clamp(300px, 80%, 1300px);
+   }
+
+   /* ========================= */
+   /* ===== CHARACTER.EXE ===== */
+   /* ========================= */
+   .character-data-container {
+      font-size: 1.125rem;
+   }
+   .character-details {
+      padding-left: 24px;
+      gap: 10px;
+   }
+   .character-buttons {
+      gap: 10px;
+   }
+   .character-row-2 {
+      padding: 5px 10px 60px;
+  }
+
+}
+
+
+@media(max-width: 500px) {
+
+   /* ========================== */
+   /* ===== DEFAULT WINDOW ===== */
+   /* ========================== */
+
+   .content-container:has(.products-boxes) {
+      width: clamp(300px, 90%, 1300px);
+   }
+
+   /* ========================= */
+   /* ===== CHARACTER.EXE ===== */
+   /* ========================= */
+   .character-data-container {
+      font-size: 1rem;
+   }
+   .character-details {
+      gap: 5px;
+      padding-left: 16px;
+   }
+   .character-buttons {
+      gap: 5px;
+  }
+  .character-row-2 {
+     padding: 5px 5px 50px;
+ }
+  .character-row-3 .character-buttons {
+      gap: 2px;
    }
 
 }

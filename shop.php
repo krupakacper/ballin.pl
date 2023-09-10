@@ -62,7 +62,7 @@
                   <img class="window-container-icon" src="assets/img/icons/clothes/t-shirt-violet.svg" alt="Ikonka produktu">
                   <img class="window-container-close-icon" src="assets/img/icons/close-small.svg" alt="Ikonka zamknij">
             </div>
-            <a href="character.html" class="white-window-container"></a>            
+            <a href="character.php" class="white-window-container"></a>            
             <div class="default-product-data">
                <div class="default-product-quantity">available</div>
                <div class="default-product-price">300 PLN<img class="corner" src="assets/img/elem-parts/corner.svg"></div>
@@ -74,7 +74,7 @@
                   <img class="window-container-icon" src="assets/img/icons/clothes/hoodie-yellow.svg" alt="Ikonka produktu">
                   <img class="window-container-close-icon" src="assets/img/icons/close-small.svg" alt="Ikonka zamknij">
             </div>
-            <a href="character.html" class="white-window-container"></a>            
+            <a href="character.php" class="white-window-container"></a>            
             <div class="default-product-data">
                <div class="default-product-quantity">available</div>
                <div class="default-product-price">620 PLN<img class="corner" src="assets/img/elem-parts/corner.svg"></div>
@@ -86,7 +86,7 @@
                   <img class="window-container-icon" src="assets/img/icons/clothes/poliver-blue.svg" alt="Ikonka produktu">
                   <img class="window-container-close-icon" src="assets/img/icons/close-small.svg" alt="Ikonka zamknij">
             </div>
-            <a href="character.html" class="white-window-container"></a>  
+            <a href="character.php" class="white-window-container"></a>  
             <div class="default-product-data">
                <div class="default-product-quantity">available</div>
                <div class="default-product-price">450 PLN<img class="corner" src="assets/img/elem-parts/corner.svg"></div>
@@ -98,7 +98,7 @@
                   <img class="window-container-icon" src="assets/img/icons/clothes/cap-red.svg" alt="Ikonka produktu">
                   <img class="window-container-close-icon" src="assets/img/icons/close-small.svg" alt="Ikonka zamknij">
             </div>
-            <a href="character.html" class="white-window-container"></a>  
+            <a href="character.php" class="white-window-container"></a>  
             <div class="default-product-data">
                <div class="default-product-quantity">available</div>
                <div class="default-product-price">130 PLN<img class="corner" src="assets/img/elem-parts/corner.svg"></div>
@@ -110,7 +110,7 @@
                   <img class="window-container-icon" src="assets/img/icons/clothes/cap-yellow.svg" alt="Ikonka produktu">
                   <img class="window-container-close-icon" src="assets/img/icons/close-small.svg" alt="Ikonka zamknij">
             </div>
-            <a href="character.html" class="white-window-container"></a>  
+            <a href="character.php" class="white-window-container"></a>  
             <div class="default-product-data">
                <div class="default-product-quantity">available</div>
                <div class="default-product-price">180 PLN<img class="corner" src="assets/img/elem-parts/corner.svg"></div>
@@ -122,7 +122,7 @@
                   <img class="window-container-icon" src="assets/img/icons/clothes/t-shirt-blue.svg" alt="Ikonka produktu">
                   <img class="window-container-close-icon" src="assets/img/icons/close-small.svg" alt="Ikonka zamknij">
             </div>
-            <a href="character.html" class="white-window-container"></a>  
+            <a href="character.php" class="white-window-container"></a>  
             <div class="default-product-data">
                <div class="default-product-quantity">available</div>
                <div class="default-product-price">295 PLN<img class="corner" src="assets/img/elem-parts/corner.svg"></div>
@@ -139,48 +139,7 @@
    <!------- FOOTER TOOLBAR -------->
    <!------------------------------->
 
-   <footer class="footer-toolbar">
-
-      <nav class="footer-menu">
-         <div class="menu-start">  
-            <!-- Main menu -->
-            <button type="button" id="menu-start-btn" class="menu-start-item btn-primary footer-elem btn-primary-click-bg">
-               <img src="assets/img/icons/menu icons/start-icon.svg" alt="Ikonka menu start">Start
-            </button>
-            <!-- Main menu submenu -->
-            <div class="menu-start-submenu-container">
-               <div class="menu-stripe"><p>BALLIN<span>ESC</span></p></div>
-               <nav>
-                  <ul class="menu-start-submenu">
-                     <li class="menu-start-submenu-item btn-primary-focus-bg"><a class="btn-link" href="#"><img src="assets/img/icons/menu icons/vision-icon.svg" alt="Ikonka menu Vision">Vision</a></li>
-                     <li class="menu-start-submenu-item btn-primary-focus-bg"><a class="btn-link" href="#"><img src="assets/img/icons/menu icons/support-icon.svg" alt="Ikonka menu Support">Support</a></li>
-                     <li class="menu-start-submenu-item btn-primary-focus-bg"><a class="btn-link" href="#"><img src="assets/img/icons/menu icons/contact-icon.svg" alt="Ikonka menu Contact">Contact</a></li>
-                     <li class="menu-start-submenu-item btn-primary-focus-bg"><a class="btn-link" href="#"><img src="assets/img/icons/menu icons/terms-icon.svg" alt="Ikonka menu Terms">Terms</a></li>
-                     <li class="menu-start-submenu-item btn-primary-focus-bg"><a class="btn-link" href="#"><img src="assets/img/icons/menu icons/privacy-icon.svg" alt="Ikonka menu Privacy">Privacy</a></li>
-                     <li class="menu-start-submenu-item btn-primary-focus-bg"><a class="btn-link" href="index.html"><img src="assets/img/icons/menu icons/escapizm-icon.svg" alt="Ikonka menu Escapizm">Escapizm</a></li>
-                  </ul>
-               </nav>
-            </div>
-            <!-- Social links -->
-            <button class="menu-start-item btn-primary footer-elem btn-primary-active-bg">
-               <a class="btn-link" href="https://www.facebook.com/ballinmob" target="_blank">
-                  <img src="assets/img/icons/menu icons/facebook-icon.svg" alt="Ikonka facebook">Facebook
-               </a>
-            </button>
-            <button class="menu-start-item btn-primary footer-elem btn-primary-active-bg">
-               <a class="btn-link" href="https://www.instagram.com/ballin.pl/" target="_blank">
-                  <img src="assets/img/icons/menu icons/instagram-icon.svg" alt="Ikonka instagram">Instagram
-               </a>
-            </button>
-
-         </div>
-      </nav>
-
-      <div class="clock">
-         04:20
-      </div>
-
-   </footer>
+   <?php include 'website-parts/footer.php'; ?>
 
 </div>
 

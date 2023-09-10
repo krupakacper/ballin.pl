@@ -17,9 +17,9 @@
       <img class="landing-page-img" src="assets/img/graphics/coffin-1.webp">
 
       <div class="landing-links">
-         <a href="shop.html" class="landing-link">Shop</a>
-         <a href="vision.html" class="landing-link">Vision</a>
-         <a href="twitter.html" class="landing-link">Characters</a>
+         <a href="shop.php" class="landing-link">Shop</a>
+         <a href="vision.php" class="landing-link">Vision</a>
+         <a href="twitter.php" class="landing-link">Characters</a>
       </div>
       <button class="landing-btn">
          <span class="landing-btn-toggle"></span>

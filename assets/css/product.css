@@ -83,9 +83,11 @@
    align-items: center;
    width: 100%;
    gap: 20px;
+   margin-right: 5px;
 }
 .character-details button {
-   font-size: 1em !important;
+   font-size: 1.1em !important;
+   padding-top: 10px !important;
 }
 .character-prices {
    display: flex;
@@ -117,6 +119,8 @@
 }
 .character-row-3 .character-buttons {
    gap: 4px;
+   width: calc(100% - 10px);
+   margin-inline: 5px;
 }
 .product-info-container {
    height: 100%;

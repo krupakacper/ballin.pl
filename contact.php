@@ -61,8 +61,8 @@
          <div class="window-container big app-container word">
             <div class="window-container-topbar">
                <div class="window-container-topbar-left">
-                  <img class="window-container-icon" src="assets/img/icons/menu icons/vision-icon.svg" alt="Ikonka produktu">
-                  Vision.exe
+                  <img class="window-container-icon" src="assets/img/icons/menu icons/contact-icon.svg" alt="Ikonka produktu">
+                  Contact.exe
                </div>
                <div class="window-container-icons">
                   <img class="window-container-close-icon" src="assets/img/icons/minimize.svg" alt="Ikonka zamknij">
@@ -72,10 +72,10 @@
             </div>
 
             <p class="app-tabs">
-               <span><a href="support.html">Support</a></span>
-               <span><a href="contact.html">Contact</a></span>
-               <span><a href="terms.html">Terms</a></span>
-               <span><a href="privacy.html">Privacy</a></span>
+               <span><a href="vision.php">Vision</a></span>
+               <span><a href="support.php">Support</a></span>
+               <span><a href="terms.php">Terms</a></span>
+               <span><a href="privacy.php">Privacy</a></span>
             </p>
 
             <div class="word-editor-container">
@@ -86,7 +86,7 @@
                      <div class="word-page white-window-container">
                         <div class="word-page-content">
 
-                           <img class="word-page-header" src="assets/img/graphics/contact-header.webp" alt="Nagłówek Vision">
+                           <img class="word-page-header" src="assets/img/graphics/contact-header.webp" alt="Nagłówek Contact">
                            
                            <h2>Nasz dział obsługi jest dostępny przez cały tydzień. Na pytania odpowiadamy szbko, więc pisz śmiało jeśli coś Cię trapi!</h2>
 
@@ -99,10 +99,11 @@
                               <li>telefon:  <a href="tel:+48888-773-756">+48 888 773 756</a> ( 9-16, poniedziałek - piątek) </li>
                            </ul>
 
-                           <p>Na wszystkie pytania odpowiadamy przeważnie w ciągu godziny przez wszystkie dni tygodnia.</p>
+                           <p>Na wszystkie pytania odpowiadamy przeważnie w ciągu godziny przez wszystkie dni tygodnia.</p><br>
 
-                           <p>
-                              <h3>Dane firmy:</h3>
+                           <h3>Dane firmy:</h3>
+
+                           <p>                              
                               „BALLIN MOB Marcin Barłowski”<br>
                               ul. Łukasińskiego 30A/10, 71-215 Szczecin<br>                             
                               NIP: 8522668310,<br>
@@ -127,48 +128,7 @@
    <!------- FOOTER TOOLBAR -------->
    <!------------------------------->
 
-   <footer class="footer-toolbar">
-
-      <nav class="footer-menu">
-         <div class="menu-start">  
-            <!-- Main menu -->
-            <button type="button" id="menu-start-btn" class="menu-start-item btn-primary footer-elem btn-primary-click-bg">
-               <img src="assets/img/icons/menu icons/start-icon.svg" alt="Ikonka menu start">Start
-            </button>
-            <!-- Main menu submenu -->
-            <div class="menu-start-submenu-container">
-               <div class="menu-stripe"><p>BALLIN<span>ESC</span></p></div>
-               <nav>
-                  <ul class="menu-start-submenu">
-                     <li class="menu-start-submenu-item btn-primary-focus-bg"><a class="btn-link" href="#"><img src="assets/img/icons/menu icons/vision-icon.svg" alt="Ikonka menu Vision">Vision</a></li>
-                     <li class="menu-start-submenu-item btn-primary-focus-bg"><a class="btn-link" href="#"><img src="assets/img/icons/menu icons/support-icon.svg" alt="Ikonka menu Support">Support</a></li>
-                     <li class="menu-start-submenu-item btn-primary-focus-bg"><a class="btn-link" href="#"><img src="assets/img/icons/menu icons/contact-icon.svg" alt="Ikonka menu Contact">Contact</a></li>
-                     <li class="menu-start-submenu-item btn-primary-focus-bg"><a class="btn-link" href="#"><img src="assets/img/icons/menu icons/terms-icon.svg" alt="Ikonka menu Terms">Terms</a></li>
-                     <li class="menu-start-submenu-item btn-primary-focus-bg"><a class="btn-link" href="#"><img src="assets/img/icons/menu icons/privacy-icon.svg" alt="Ikonka menu Privacy">Privacy</a></li>
-                     <li class="menu-start-submenu-item btn-primary-focus-bg"><a class="btn-link" href="index.html"><img src="assets/img/icons/menu icons/escapizm-icon.svg" alt="Ikonka menu Escapizm">Escapizm</a></li>
-                  </ul>
-               </nav>
-            </div>
-            <!-- Social links -->
-            <button class="menu-start-item btn-primary footer-elem btn-primary-active-bg">
-               <a class="btn-link" href="https://www.facebook.com/ballinmob" target="_blank">
-                  <img src="assets/img/icons/menu icons/facebook-icon.svg" alt="Ikonka facebook">Facebook
-               </a>
-            </button>
-            <button class="menu-start-item btn-primary footer-elem btn-primary-active-bg">
-               <a class="btn-link" href="https://www.instagram.com/ballin.pl/" target="_blank">
-                  <img src="assets/img/icons/menu icons/instagram-icon.svg" alt="Ikonka instagram">Instagram
-               </a>
-            </button>
-
-         </div>
-      </nav>
-
-      <div class="clock">
-         04:20
-      </div>
-
-   </footer>
+   <?php include 'website-parts/footer.php'; ?>
 
 </div>
 

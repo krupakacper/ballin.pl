@@ -91,11 +91,12 @@ textarea, input[type="text"], input[type="tel"], input[type="email"] {
 .cart-product-name {
    font-size: 1.125em;
    padding: 5px 4px;
+   text-align: center;
 }
 .cart-products-container {
    display: grid;
    grid-template-columns: repeat(2, 1fr);
-   gap: 15px;
+   gap: 20px;
 }
 .cart-products {
    height: 250px;

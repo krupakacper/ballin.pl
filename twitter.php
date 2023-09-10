@@ -67,7 +67,7 @@
                <img class="twitter-more-dots" src="assets/img/icons/three-dots.svg" alt="Ikonka więcej">
             </div>
 
-            <a class="twitter-post-img" href="character.html"></a>
+            <a class="twitter-post-img" href="character.php"></a>
 
             <footer class="twitter-post-footer">
                <div class="twitter-footer-col twitter-price">
@@ -92,7 +92,7 @@
                <img class="twitter-more-dots" src="assets/img/icons/three-dots.svg" alt="Ikonka więcej">
             </div>
 
-            <a class="twitter-post-img" href="character.html"></a>
+            <a class="twitter-post-img" href="character.php"></a>
 
             <footer class="twitter-post-footer">
                <div class="twitter-footer-col twitter-price">
@@ -117,7 +117,7 @@
                <img class="twitter-more-dots" src="assets/img/icons/three-dots.svg" alt="Ikonka więcej">
             </div>
 
-            <a class="twitter-post-img" href="character.html"></a>
+            <a class="twitter-post-img" href="character.php"></a>
 
             <footer class="twitter-post-footer">
                <div class="twitter-footer-col twitter-price">
@@ -142,7 +142,7 @@
                <img class="twitter-more-dots" src="assets/img/icons/three-dots.svg" alt="Ikonka więcej">
             </div>
 
-            <a class="twitter-post-img" href="character.html"></a>
+            <a class="twitter-post-img" href="character.php"></a>
 
             <footer class="twitter-post-footer">
                <div class="twitter-footer-col twitter-price">
@@ -167,7 +167,7 @@
                <img class="twitter-more-dots" src="assets/img/icons/three-dots.svg" alt="Ikonka więcej">
             </div>
 
-            <a class="twitter-post-img" href="character.html"></a>
+            <a class="twitter-post-img" href="character.php"></a>
 
             <footer class="twitter-post-footer">
                <div class="twitter-footer-col twitter-price">
@@ -192,7 +192,7 @@
                <img class="twitter-more-dots" src="assets/img/icons/three-dots.svg" alt="Ikonka więcej">
             </div>
 
-            <a class="twitter-post-img" href="character.html"></a>
+            <a class="twitter-post-img" href="character.php"></a>
 
             <footer class="twitter-post-footer">
                <div class="twitter-footer-col twitter-price">
@@ -217,7 +217,7 @@
                <img class="twitter-more-dots" src="assets/img/icons/three-dots.svg" alt="Ikonka więcej">
             </div>
 
-            <a class="twitter-post-img" href="character.html"></a>
+            <a class="twitter-post-img" href="character.php"></a>
 
             <footer class="twitter-post-footer">
                <div class="twitter-footer-col twitter-price">
@@ -242,7 +242,7 @@
                <img class="twitter-more-dots" src="assets/img/icons/three-dots.svg" alt="Ikonka więcej">
             </div>
 
-            <a class="twitter-post-img" href="character.html"></a>
+            <a class="twitter-post-img" href="character.php"></a>
 
             <footer class="twitter-post-footer">
                <div class="twitter-footer-col twitter-price">
@@ -267,7 +267,7 @@
                <img class="twitter-more-dots" src="assets/img/icons/three-dots.svg" alt="Ikonka więcej">
             </div>
 
-            <a class="twitter-post-img" href="character.html"></a>
+            <a class="twitter-post-img" href="character.php"></a>
 
             <footer class="twitter-post-footer">
                <div class="twitter-footer-col twitter-price">
@@ -294,48 +294,7 @@
    <!------- FOOTER TOOLBAR -------->
    <!------------------------------->
 
-   <footer class="footer-toolbar">
-
-      <nav class="footer-menu">
-         <div class="menu-start">  
-            <!-- Main menu -->
-            <button type="button" id="menu-start-btn" class="menu-start-item btn-primary footer-elem btn-primary-click-bg">
-               <img src="assets/img/icons/menu icons/start-icon.svg" alt="Ikonka menu start">Start
-            </button>
-            <!-- Main menu submenu -->
-            <div class="menu-start-submenu-container">
-               <div class="menu-stripe"><p>BALLIN<span>ESC</span></p></div>
-               <nav>
-                  <ul class="menu-start-submenu">
-                     <li class="menu-start-submenu-item btn-primary-focus-bg"><a class="btn-link" href="#"><img src="assets/img/icons/menu icons/vision-icon.svg" alt="Ikonka menu Vision">Vision</a></li>
-                     <li class="menu-start-submenu-item btn-primary-focus-bg"><a class="btn-link" href="#"><img src="assets/img/icons/menu icons/support-icon.svg" alt="Ikonka menu Support">Support</a></li>
-                     <li class="menu-start-submenu-item btn-primary-focus-bg"><a class="btn-link" href="#"><img src="assets/img/icons/menu icons/contact-icon.svg" alt="Ikonka menu Contact">Contact</a></li>
-                     <li class="menu-start-submenu-item btn-primary-focus-bg"><a class="btn-link" href="#"><img src="assets/img/icons/menu icons/terms-icon.svg" alt="Ikonka menu Terms">Terms</a></li>
-                     <li class="menu-start-submenu-item btn-primary-focus-bg"><a class="btn-link" href="#"><img src="assets/img/icons/menu icons/privacy-icon.svg" alt="Ikonka menu Privacy">Privacy</a></li>
-                     <li class="menu-start-submenu-item btn-primary-focus-bg"><a class="btn-link" href="index.html"><img src="assets/img/icons/menu icons/escapizm-icon.svg" alt="Ikonka menu Escapizm">Escapizm</a></li>
-                  </ul>
-               </nav>
-            </div>
-            <!-- Social links -->
-            <button class="menu-start-item btn-primary footer-elem btn-primary-active-bg">
-               <a class="btn-link" href="https://www.facebook.com/ballinmob" target="_blank">
-                  <img src="assets/img/icons/menu icons/facebook-icon.svg" alt="Ikonka facebook">Facebook
-               </a>
-            </button>
-            <button class="menu-start-item btn-primary footer-elem btn-primary-active-bg">
-               <a class="btn-link" href="https://www.instagram.com/ballin.pl/" target="_blank">
-                  <img src="assets/img/icons/menu icons/instagram-icon.svg" alt="Ikonka instagram">Instagram
-               </a>
-            </button>
-
-         </div>
-      </nav>
-
-      <div class="clock">
-         04:20
-      </div>
-
-   </footer>
+   <?php include 'website-parts/footer.php'; ?>
 
 </div>
 

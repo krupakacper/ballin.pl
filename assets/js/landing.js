@@ -7,11 +7,11 @@ let isActive = false;
 landingBtn.addEventListener('click', () => {
    if(isActive == false) {
       landingBtnToggle.classList.add('active');
-      landingImg.src = 'assets/img/landing-page/coffin-2.webp';
+      landingImg.src = 'assets/img/graphics/coffin-2.webp';
       isActive = true;
    } else {
       landingBtnToggle.classList.remove('active');
-      landingImg.src = 'assets/img/landing-page/coffin-1.webp';
+      landingImg.src = 'assets/img/graphics/coffin-1.webp';
       isActive = false;
    }
 });

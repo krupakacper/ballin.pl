@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Cart | Ballin.pl</title>
+
+   <!-- LINK CSS -->
+   <link rel="stylesheet" href="assets/css/main.css">
+   <link rel="stylesheet" href="assets/css/cart.css">
+
+</head>
+<body>
+
+
+<!------------------------>
+<!------- DESKTOP -------->
+<!------------------------>
+
+<div class="desktop">
+
+
+   <div class="desktop-folders">
+      <div class="desktop-folder menu-folder">
+         <img class="cart-desktop-folder" src="assets/img/elem-parts/menu.webp" alt="Ikonka menu">
+         <span>Menu</span>
+      </div>
+         
+      <div class="desktop-folder cart-folder" id="cart-folder">
+         <img class="cart-desktop-folder" src="assets/img/elem-parts/cart-empty.webp" alt="Ikonka pustego koszyka">
+         <span>Orders</span>
+      </div>
+   </div>
+
+   <!-- empty cart warning -->
+   <dialog id="empty-cart-modal">
+      <div class="window-container-topbar">
+         <div class="window-container-topbar-left">
+            Warning
+         </div>
+         <button class="window-container-close-icon" id="close-empty-cart-modal">
+            <img src="assets/img/icons/close-small.svg" alt="Ikonka zamknij">
+         </button>
+      </div>
+      <div class="empty-cart-modal-content">
+         <p>
+            <img src="assets/img/icons/access-denied-icon.svg" alt="Ikonka odmowy dostępu">
+            Access is denied. Your cart is empty.
+         </p>
+         <button class="btn-primary btn-primary-dashed" id="close-empty-cart-modal">OK</button>
+      </div>
+   </dialog>
+
+
+
+   <!--------------------->
+   <!------- CART -------->
+   <!--------------------->
+
+   <form class="content-container no-scrollbar-container" id="cart-form">
+
+
+      <!------- SHIPPING.EXE -------->
+
+      <div class="window-container big">
+
+         <!-- topbar -->
+         <div class="window-container-topbar">
+            <div class="window-container-topbar-left">
+               Shipping.exe
+            </div>
+            <img class="window-container-close-icon" src="assets/img/icons/close-small.svg" alt="Ikonka zamknij">
+         </div>
+
+
+         <div class="cart-form-order-data">
+
+
+            <!-- row 1 -->
+            <div class="cart-form-row">
+               <p><img src="assets/img/icons/order-data-icon.svg" alt="Dane zamówienia ikonka">
+               Dane zamówienia</p>
+            </div>
+
+
+            <!-- row 2 -->
+            <div class="cart-form-row">
+               <label for="name"><span>Name:</span><input id="name" type="text" name="name"></label>
+               <label for="last-name"><span>Last name:</span><input id="last-name" type="text" name="last_name"></label>
+            </div>
+
+
+            <!-- row 3 -->
+            <div class="cart-form-row">
+               <label for="street"><span>Street:</span><input id="street" type="text" name="street"></label>
+               <label for="postal-code"><span>Postal code:</span><input id="postal-code" type="text" name="postal_code"></label>
+               <label for="city"><span>City:</span><input id="city" type="text" name="city"></label>
+            </div>  
+
+
+            <!-- row 4 -->
+            <div class="cart-form-row">
+               <label for="phone"><span>Phone:</span><input id="phone" type="tel" name="phone"></label>
+               <label for="email"><span>Email:</span><input id="email" type="email" name="email"></label>
+            </div> 
+
+
+            <!-- row 5 -->
+            <div class="cart-form-row shipping-method">
+
+               <p>Choose shipping method:</p>
+
+               <label for="shippingMethod1"><input type="radio" id="shippingMethod1" name="shipping_method" value="inpost">Paczkomat InPost</label>   
+               <label for="shippingMethod2"><input type="radio" id="shippingMethod2" name="shipping_method" value="dpd">DPD</label>
+               <label for="shippingMethod3"><input type="radio" id="shippingMethod3" name="shipping_method" value="dhl">DHL</label>
+
+            </div> 
+
+
+            <!-- row 6 -->
+            <div class="cart-form-row">
+
+               <label for="order_notes">Order notes (optional):</label>
+
+               <textarea id="order_notes" name="order_notes" rows="5" style="resize: vertical"></textarea>
+
+            </div>              
+
+
+         </div>
+
+      </div>
+
+      
+      <!-- CART COLLUMN 2 -->
+      <div class="cart-col-2">
+
+         
+         <!------- PRODUCT.EXE -------->
+         <div class="window-container big">
+
+            <!-- topbar -->
+            <div class="window-container-topbar">
+               <div class="window-container-topbar-left">
+                  Product.exe
+               </div>
+               <img class="window-container-close-icon" src="assets/img/icons/close-small.svg" alt="Ikonka zamknij">
+            </div>           
+
+            <div class="cart-form-order-data">
+               <p class="cart-product-name">Justice Hoodie</p>
+
+               <div class="cart-products-container">
+
+                  <div class="white-window-container cart-products"></div>
+                  <div class="white-window-container white-window-container-100h cart-product-details">
+                     <table>
+                        <tr class="table-header"><th class="table-header-col1">Name</th>              <th class="table-header-col2">Data</th></tr>
+                        <tr><td class="icon-cell"><img src="assets/img/icons/cart/size-icon.svg" alt="Rozmiar">    Size</td>                            <td>M</td></tr>
+                        <tr><td class="icon-cell"><img src="assets/img/icons/cart/quantity-icon.svg" alt="Ilość">Quantity</td>                        <td>1</td></tr>
+                        <tr><td class="icon-cell"><img src="assets/img/icons/cart/price-icon.svg" alt="Cena">   Price</td>                           <td>179</td></tr>
+                        <tr><td class="icon-cell"><img src="assets/img/icons/cart/shipping-icon.svg" alt="Dostawa">Shipping</td>                        <td>12</td></tr>
+                        <tr><td class="icon-cell"><img src="assets/img/icons/cart/total-icon.svg" alt="Razem">   Total</td>                           <td>191</td></tr>
+                     </table>
+                  </div>
+
+               </div>
+            </div>
+
+            <div class="default-product-data">
+               <div class="default-product-price"><img class="corner" src="assets/img/elem-parts/corner.svg"></div>
+            </div>
+
+         </div>
+
+         
+         <!------- PAYMENT.EXE -------->
+         <div class="window-container big">
+
+            <!-- topbar -->
+            <div class="window-container-topbar">
+               <div class="window-container-topbar-left">
+                  Payment.exe
+               </div>
+               <img class="window-container-close-icon" src="assets/img/icons/close-small.svg" alt="Ikonka zamknij">
+            </div>    
+            
+            <div class="cart-form-order-data">
+               <!-- payment method -->
+               <div class="payment-method-row">
+                  <img src="assets/img/graphics/paperclip.webp" alt="Spinacz z Worda">
+
+                  <div class="payment-method">
+                     <p>Choose payment method:</p>
+                     
+                     <label for="paymentMethod1"><input type="radio" id="paymentMethod1" name="payment_method" value="inpost">PayU</label>                                   
+                     <label for="paymentMethod2"><input type="radio" id="paymentMethod2" name="payment_method" value="dpd">PayPal</label>                  
+                     <label for="paymentMethod3"><input type="radio" id="paymentMethod3" name="payment_method" value="dhl">Przelew bankowy</label>
+                  </div>
+               </div>
+               
+               <hr class="payment-exe-divider">
+
+               <!-- submit cart form -->
+               <div class="cart-submit">
+                  <div class="cart-checkbox-terms">
+                     <label for="terms_n_condition"><input type="checkbox" name="terms_n_condition" id="terms_n_condition">I agree <a href="#">terms and condition</a>*</label>
+                  </div>
+                  <button class="btn-primary">
+                     Place order
+                  </button>
+               </div>
+            </div>
+
+         </div>
+
+
+      </div>
+
+   </form>
+   
+
+   <!------------------------------->
+   <!------- FOOTER TOOLBAR -------->
+   <!------------------------------->
+
+   <footer class="footer-toolbar">
+
+      <nav class="footer-menu">
+         <div class="menu-start">  
+            <!-- Main menu -->
+            <button type="button" id="menu-start-btn" class="menu-start-item btn-primary footer-elem btn-primary-click-bg">
+               <img src="assets/img/icons/menu icons/start-icon.svg" alt="Ikonka menu start">Start
+            </button>
+            <!-- Main menu submenu -->
+            <div class="menu-start-submenu-container">
+               <div class="menu-stripe"><p>BALLIN<span>ESC</span></p></div>
+               <nav>
+                  <ul class="menu-start-submenu">
+                     <li class="menu-start-submenu-item btn-primary-focus-bg"><a class="btn-link" href="#"><img src="assets/img/icons/menu icons/vision-icon.svg" alt="Ikonka menu Vision">Vision</a></li>
+                     <li class="menu-start-submenu-item btn-primary-focus-bg"><a class="btn-link" href="#"><img src="assets/img/icons/menu icons/support-icon.svg" alt="Ikonka menu Support">Support</a></li>
+                     <li class="menu-start-submenu-item btn-primary-focus-bg"><a class="btn-link" href="#"><img src="assets/img/icons/menu icons/contact-icon.svg" alt="Ikonka menu Contact">Contact</a></li>
+                     <li class="menu-start-submenu-item btn-primary-focus-bg"><a class="btn-link" href="#"><img src="assets/img/icons/menu icons/terms-icon.svg" alt="Ikonka menu Terms">Terms</a></li>
+                     <li class="menu-start-submenu-item btn-primary-focus-bg"><a class="btn-link" href="#"><img src="assets/img/icons/menu icons/privacy-icon.svg" alt="Ikonka menu Privacy">Privacy</a></li>
+                     <li class="menu-start-submenu-item btn-primary-focus-bg"><a class="btn-link" href="index.html"><img src="assets/img/icons/menu icons/escapizm-icon.svg" alt="Ikonka menu Escapizm">Escapizm</a></li>
+                  </ul>
+               </nav>
+            </div>
+            <!-- Social links -->
+            <button class="menu-start-item btn-primary footer-elem btn-primary-active-bg">
+               <a class="btn-link" href="https://www.facebook.com/ballinmob" target="_blank">
+                  <img src="assets/img/icons/menu icons/facebook-icon.svg" alt="Ikonka facebook">Facebook
+               </a>
+            </button>
+            <button class="menu-start-item btn-primary footer-elem btn-primary-active-bg">
+               <a class="btn-link" href="https://www.instagram.com/ballin.pl/" target="_blank">
+                  <img src="assets/img/icons/menu icons/instagram-icon.svg" alt="Ikonka instagram">Instagram
+               </a>
+            </button>
+
+         </div>
+      </nav>
+
+      <div class="clock">
+         04:20
+      </div>
+
+   </footer>
+
+</div>
+
+
+<!-- Default JS -->
+<script src="assets/js/jquery.js"></script>
+<script src="assets/js/main.js"></script>
+
+<!-- Additional JS -->
+<script src="assets/js/product.js"></script>
+
+</body>
+</html>

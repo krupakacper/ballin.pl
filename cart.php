@@ -1,3 +1,30 @@
+<?php
+
+session_start();
+
+require_once('php-guts/CreateDb.php');
+require_once('php-guts/components.php');
+
+// create instance of CreateDb class
+$database = new CreateDb();
+
+if(isset($_GET['action'])) {
+   if($_GET['action'] == 'remove') {
+      foreach($_SESSION['cart'] as $key => $value) {
+         if($value['product_id'] == $_GET['id']) {
+            unset($_SESSION['cart'][$key]);
+            $_SESSION['cart'] = array_values($_SESSION['cart']);
+            echo '<script>window.location = "cart.php"</script>';
+         }
+      }
+      if(count($_SESSION['cart']) == 0){
+         unset($_SESSION['cart']);
+      }
+   }
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="pl">
 <head>
@@ -17,39 +44,7 @@
 <!------- DESKTOP -------->
 <!------------------------>
 
-<div class="desktop">
-
-
-   <div class="desktop-folders">
-      <div class="desktop-folder menu-folder">
-         <img class="cart-desktop-folder" src="assets/img/elem-parts/menu.webp" alt="Ikonka menu">
-         <span>Menu</span>
-      </div>
-         
-      <div class="desktop-folder cart-folder" id="cart-folder">
-         <img class="cart-desktop-folder" src="assets/img/elem-parts/cart-empty.webp" alt="Ikonka pustego koszyka">
-         <span>Orders</span>
-      </div>
-   </div>
-
-   <!-- empty cart warning -->
-   <dialog id="empty-cart-modal">
-      <div class="window-container-topbar">
-         <div class="window-container-topbar-left">
-            Warning
-         </div>
-         <button class="window-container-close-icon" id="close-empty-cart-modal">
-            <img src="assets/img/icons/close-small.svg" alt="Ikonka zamknij">
-         </button>
-      </div>
-      <div class="empty-cart-modal-content">
-         <p>
-            <img src="assets/img/icons/access-denied-icon.svg" alt="Ikonka odmowy dostępu">
-            Access is denied. Your cart is empty.
-         </p>
-         <button class="btn-primary btn-primary-dashed" id="close-empty-cart-modal">OK</button>
-      </div>
-   </dialog>
+<?php include 'website-parts/desktop.php'; ?>
 
 
 
@@ -57,12 +52,12 @@
    <!------- CART -------->
    <!--------------------->
 
-   <form class="content-container no-scrollbar-container" id="cart-form">
+   <div class="content-container no-scrollbar-container" id="cart-form">
 
 
       <!------- SHIPPING.EXE -------->
 
-      <div class="window-container big">
+      <form class="window-container big client-data-form">
 
          <!-- topbar -->
          <div class="window-container-topbar">
@@ -110,9 +105,12 @@
 
                <p>Choose shipping method:</p>
 
-               <label for="shippingMethod1"><input type="radio" id="shippingMethod1" name="shipping_method" value="inpost">Paczkomat InPost</label>   
-               <label for="shippingMethod2"><input type="radio" id="shippingMethod2" name="shipping_method" value="dpd">DPD</label>
-               <label for="shippingMethod3"><input type="radio" id="shippingMethod3" name="shipping_method" value="dhl">DHL</label>
+               <fieldset id="shipping-method">
+                  <label for="shippingMethod1"><input type="radio" id="shippingMethod1" name="shipping_method" value="Paczkomat InPost">Paczkomat InPost</label>   
+                  <label for="shippingMethod2"><input type="radio" id="shippingMethod2" name="shipping_method" value="DPD">DPD</label>
+                  <label for="shippingMethod3"><input type="radio" id="shippingMethod3" name="shipping_method" value="DHL">DHL</label>
+               </fieldset>
+               
 
             </div> 
 
@@ -120,16 +118,16 @@
             <!-- row 6 -->
             <div class="cart-form-row">
 
-               <label for="order_notes">Order notes (optional):</label>
+               <label for="order-notes">Order notes (optional):</label>
 
-               <textarea id="order_notes" name="order_notes" rows="5" style="resize: vertical"></textarea>
+               <textarea id="order-notes" name="order_notes" rows="5" style="resize: vertical" placeholder="np. numer paczkomatu"></textarea>
 
             </div>              
 
 
          </div>
 
-      </div>
+      </form>
 
       
       <!-- CART COLLUMN 2 -->
@@ -152,15 +150,51 @@
 
                <div class="cart-products-container">
 
-                  <div class="white-window-container cart-products"></div>
+                  <div class="white-window-container cart-products">
+                     
+                  <?php 
+                     //display all products in cart and count total
+                     $total = 12; //12 is charge for delivery
+                     //create array of products for creating order
+                     $order_products = array();
+                     if(isset($_SESSION['cart']) && count($_SESSION['cart'])>0){
+                        $count = count($_SESSION['cart']);
+                        for($i=0;$i<$count;$i++) {
+                           cart_product_component($_SESSION['cart'][$i]['product_id'], $_SESSION['cart'][$i]['product_name'], $_SESSION['cart'][$i]['product_img']);
+                           $total += $_SESSION['cart'][$i]['product_price'];
+                           //push the product to order array
+                           $product = array(
+                              'name' => $_SESSION['cart'][$i]['product_name'],
+                              'size' => $_SESSION['cart'][$i]['product_size'],
+                              'price' => $_SESSION['cart'][$i]['product_price'],
+                              'id' => $_SESSION['cart'][$i]['product_id']
+                           );
+                           array_push($order_products, $product);
+                        }
+                     }
+                     else echo 'Cart is empty';
+                  ?>
+
+                  </div>
+                  
                   <div class="white-window-container white-window-container-100h cart-product-details">
                      <table>
-                        <tr class="table-header"><th class="table-header-col1">Name</th>              <th class="table-header-col2">Data</th></tr>
-                        <tr><td class="icon-cell"><img src="assets/img/icons/cart/size-icon.svg" alt="Rozmiar">    Size</td>                            <td>M</td></tr>
-                        <tr><td class="icon-cell"><img src="assets/img/icons/cart/quantity-icon.svg" alt="Ilość">Quantity</td>                        <td>1</td></tr>
-                        <tr><td class="icon-cell"><img src="assets/img/icons/cart/price-icon.svg" alt="Cena">   Price</td>                           <td>179</td></tr>
-                        <tr><td class="icon-cell"><img src="assets/img/icons/cart/shipping-icon.svg" alt="Dostawa">Shipping</td>                        <td>12</td></tr>
-                        <tr><td class="icon-cell"><img src="assets/img/icons/cart/total-icon.svg" alt="Razem">   Total</td>                           <td>191</td></tr>
+                        <tr class="table-header"><th class="table-header-col1">Name</th><th class="table-header-col2">Data</th></tr>
+
+                        <tr><td class="icon-cell"><img src="assets/img/icons/cart/size-icon.svg" alt="Rozmiar">Size</td><td class="size">-</td></tr>
+                        <tr><td class="icon-cell"><img src="assets/img/icons/cart/quantity-icon.svg" alt="Ilość">Quantity</td><td>1</td></tr>
+                        <tr class="not-dashed-border-row"><td class="icon-cell"><img src="assets/img/icons/cart/price-icon.svg" alt="Cena">Price</td><td class="price">-</td></tr>
+
+                        <tr class="dashed-border-row"><td class="icon-cell"><img src="assets/img/icons/cart/shipping-icon.svg" alt="Dostawa">Shipping</td><td>12</td></tr>
+                        <tr><td class="icon-cell"><img src="assets/img/icons/cart/total-icon.svg" alt="Razem">Total</td><td>
+                           <?php
+                              //count total
+                              if(isset($_SESSION['cart'])) {
+                                 echo $total;
+                              }
+                              else echo '-';
+                           ?>
+                        </td></tr>
                      </table>
                   </div>
 
@@ -175,7 +209,7 @@
 
          
          <!------- PAYMENT.EXE -------->
-         <div class="window-container big">
+         <form class="window-container big payment-form">
 
             <!-- topbar -->
             <div class="window-container-topbar">
@@ -193,31 +227,36 @@
                   <div class="payment-method">
                      <p>Choose payment method:</p>
                      
-                     <label for="paymentMethod1"><input type="radio" id="paymentMethod1" name="payment_method" value="inpost">PayU</label>                                   
-                     <label for="paymentMethod2"><input type="radio" id="paymentMethod2" name="payment_method" value="dpd">PayPal</label>                  
-                     <label for="paymentMethod3"><input type="radio" id="paymentMethod3" name="payment_method" value="dhl">Przelew bankowy</label>
+                     <fieldset id="payment-method">
+                        <label for="paymentMethod1"><input type="radio" id="paymentMethod1" name="payment_method" value="Przelewy24">Przelewy24</label>                                   
+                        <label for="paymentMethod2"><input type="radio" id="paymentMethod2" name="payment_method" value="PayPal">PayPal</label>                  
+                        <label for="paymentMethod3"><input type="radio" id="paymentMethod3" name="payment_method" value="Przelew bankowy">Przelew bankowy</label>
+                     </fieldset>
+                     
                   </div>
                </div>
                
                <hr class="payment-exe-divider">
+               <input type="hidden" id="total" name="total" value="<?php if(isset($_SESSION['cart'])) echo $total; ?>
+               ">
 
                <!-- submit cart form -->
                <div class="cart-submit">
                   <div class="cart-checkbox-terms">
                      <label for="terms_n_condition"><input type="checkbox" name="terms_n_condition" id="terms_n_condition">I agree <a href="#">terms and condition</a>*</label>
                   </div>
-                  <button class="btn-primary">
+                  <button class="btn-primary submit-btn" type="submit">
                      Place order
                   </button>
                </div>
             </div>
 
-         </div>
+         </form>
 
 
       </div>
 
-   </form>
+   </div>
    
 
    <!------------------------------->
@@ -225,8 +264,7 @@
    <!------------------------------->
 
    <?php include 'website-parts/footer.php'; ?>
- 
-</div>
+   
 
 
 <!-- Default JS -->
@@ -234,7 +272,42 @@
 <script src="assets/js/main.js"></script>
 
 <!-- Additional JS -->
-<script src="assets/js/product.js"></script>
+<script src="assets/js/cart.js"></script>
+
+<script>
+   // Save products to session storage
+   $(document).ready(function() {
+      const products = <?php echo json_encode($order_products); ?>;
+      sessionStorage.setItem('order_products', JSON.stringify(products));
+   });   
+
+   // Set up cart data
+   const cart = <?php echo json_encode($_SESSION['cart']); ?>;
+   console.log(cart);
+   // document.querySelector('.product').classList.add('current-product');
+   $('.product').first().addClass('current-product')
+   $('.size').html(cart[0]['product_size']);
+   $('.price').html(cart[0]['product_price']);
+   // console.log($('.product')[0]);
+
+   // Change displayed cart data
+   $('.product').click(function(event) {
+      index = $(this).index();
+
+      //change current product
+      $('.product').removeClass('current-product');
+      $(this).addClass('current-product');
+
+      //change displayed current product data
+      $('.size').html(cart[index]['product_size']);
+      $('.price').html(cart[index]['product_price']);
+      
+
+      //save info which tab was open last
+      localStorage.setItem("LastCurrentProduct", index);
+   });
+</script>
+
 
 </body>
 </html>

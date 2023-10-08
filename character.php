@@ -1,55 +1,104 @@
+<?php  
+
+// Start session
+session_start();
+
+// Create instance of CreateDb class
+require_once('php-guts/CreateDb.php');
+$database = new CreateDb();
+
+// Get product id from url
+$product_id = $_GET['id'];
+
+// Get product data from database
+$result = $database->getProduct($product_id);
+while($row = mysqli_fetch_assoc($result)) {
+   //get standard data
+   $product_id = $row['id'];
+   $product_name = $row['product_name'];
+   $product_price = $row['product_price'];
+   $product_type = $row['product_type'];
+   $product_quantity = $row['product_quantity'];
+   $product_sizes = $database->getSizes($product_id);
+   //get images to array
+   $product_images = $row['product_images'];
+   $product_images_array = explode(",",$product_images);
+   $product_img = $product_images_array[0];
+}
+
+
+// Check product type to choose product icon
+switch ($product_type) {
+   case 't-shirt':
+      $product_icon = 'src="assets/img/icons/clothes/t-shirt-yellow.svg"';
+      break;
+   case 'blouse':
+      $product_icon = 'src="assets/img/icons/clothes/blouse-violet.svg"';
+      break;
+   case 'cap':
+      $product_icon = 'src="assets/img/icons/clothes/cap-red.svg"';
+      break;
+}
+
+// Add to cart
+if(isset($_POST['add_to_cart'])) {
+
+   $item_array = array(
+      'product_id' => $_POST['product_id'],
+      'product_name' => $_POST['product_name'],
+      'product_price' => $_POST['product_price'],
+      'product_size' => $_POST['product_size'],
+      'product_img' => $_POST['product_img']
+   );
+
+   //check if cart is already created
+   if(isset($_SESSION['cart'])) {
+      $item_array_id = array_column($_SESSION['cart'], "product_id");
+      //chech if this product is already in cart
+      if(in_array($_POST['product_id'], $item_array_id)) {
+         echo '<script>alert("This product is already in cart")</script>';
+      } else {
+         echo '<script>console.log("is not in cart")</script>';
+         array_push($_SESSION['cart'], $item_array);
+      }
+   } else {
+      //create new session variable for cart
+      $_SESSION['cart'] = array();
+      //add product to cart
+      array_push($_SESSION['cart'], $item_array);
+   }
+}
+
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="pl">
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Product | Ballin.pl</title>
+   <title><?php echo $product_name; ?> | Ballin.pl</title>
 
    <!-- LINK CSS -->
    <link rel="stylesheet" href="assets/css/main.css">
-   <link rel="stylesheet" href="assets/css/product.css">
+   <link rel="stylesheet" href="assets/css/character.css">
 
 </head>
 <body>
+
+<script>
+    if ( window.history.replaceState ) {
+        window.history.replaceState( null, null, window.location.href );
+    }
+</script>
 
 
 <!------------------------>
 <!------- DESKTOP -------->
 <!------------------------>
 
-<div class="desktop">
-
-
-   <div class="desktop-folders">
-      <div class="desktop-folder menu-folder">
-         <img class="cart-desktop-folder" src="assets/img/elem-parts/menu.webp" alt="Ikonka menu">
-         <span>Menu</span>
-      </div>
-         
-      <div class="desktop-folder cart-folder" id="cart-folder">
-         <img class="cart-desktop-folder" src="assets/img/elem-parts/cart-empty.webp" alt="Ikonka pustego koszyka">
-         <span>Orders</span>
-      </div>
-   </div>
-
-   <!-- empty cart warning -->
-   <dialog id="empty-cart-modal">
-      <div class="window-container-topbar">
-         <div class="window-container-topbar-left">
-            Warning
-         </div>
-         <button class="window-container-close-icon" id="close-empty-cart-modal">
-            <img src="assets/img/icons/close-small.svg" alt="Ikonka zamknij">
-         </button>
-      </div>
-      <div class="empty-cart-modal-content">
-         <p>
-            <img src="assets/img/icons/access-denied-icon.svg" alt="Ikonka odmowy dostępu">
-            Access is denied. Your cart is empty.
-         </p>
-         <button class="btn-primary btn-primary-dashed" id="close-empty-cart-modal">OK</button>
-      </div>
-   </dialog>
+<?php include 'website-parts/desktop.php'; ?>
 
 
 
@@ -68,20 +117,22 @@
 
             <div class="window-container-topbar">
                <div class="window-container-topbar-left">
-                  <img class="window-container-icon" src="assets/img/icons/clothes/t-shirt-yellow.svg" alt="Ikonka produktu">
-               </div>
-               <!-- <img class="window-container-close-icon" src="assets/img/icons/close-small.svg" alt="Ikonka zamknij"> -->               
+                  <img class="window-container-icon" <?php echo $product_icon ?> alt="Ikonka produktu">
+               </div>            
                <button class="window-container-close-icon">
                   <img src="assets/img/icons/close-small.svg" alt="Ikonka zamknij">
                </button>
             </div>
 
-            <div class="white-window-container">
-
+            <div class="white-window-container product-images">
+               <img class="product-img product-current-image" src="<?php echo $product_images_array[0] ?>" alt="Zdjęcie produktu <?php $product_name ?>">
+               <button class="arrow-btn arrow-left"><img src="assets/img/elem-parts/product-img-slider-arrow-left.svg" alt="strzałka w lewo"></button>
+               <button class="arrow-btn arrow-right"><img src="assets/img/elem-parts/product-img-slider-arrow-right.svg" alt="strzałka w prawo"></button>
             </div>
+
             <div class="default-product-data">
-               <div class="default-product-quantity">available</div>
-               <div class="default-product-price">289 PLN<img class="corner" src="assets/img/elem-parts/corner.svg"></div>
+               <div class="default-product-quantity"><?php if($product_quantity>0) echo 'available'; else echo 'inaccessible'; ?></div>
+               <div class="default-product-price"><?php echo $product_price ?> PLN<img class="corner" src="assets/img/elem-parts/corner.svg"></div>
             </div>
 
          </div>
@@ -94,7 +145,7 @@
 
                <div class="window-container-topbar">
                   <div class="window-container-topbar-left">
-                     <img class="window-container-icon" src="assets/img/icons/clothes/cap-blue.svg" alt="Ikonka produktu">
+                     <img class="window-container-icon" <?php echo $product_icon ?> alt="Ikonka produktu">
                   </div>
                   <img class="window-container-close-icon" src="assets/img/icons/close-small.svg" alt="Ikonka zamknij">
                </div>
@@ -102,6 +153,7 @@
                <div class="white-window-container">
    
                </div>
+
                <div class="default-product-data">
                   <div class="default-product-quantity default-product-data-empty"></div>
                   <div class="default-product-price default-product-data-empty"><img class="corner" src="assets/img/elem-parts/corner.svg"></div>
@@ -113,7 +165,7 @@
 
                <div class="window-container-topbar">
                   <div class="window-container-topbar-left">
-                     <img class="window-container-icon" src="assets/img/icons/clothes/poliver-violet.svg" alt="Ikonka produktu">
+                     <img class="window-container-icon" <?php echo $product_icon ?> alt="Ikonka produktu">
                   </div>
                   <img class="window-container-close-icon" src="assets/img/icons/close-small.svg" alt="Ikonka zamknij">
                </div>
@@ -121,6 +173,7 @@
                <div class="white-window-container">
    
                </div>
+
                <div class="default-product-data">
                   <div class="default-product-quantity default-product-data-empty"></div>
                   <div class="default-product-price default-product-data-empty"><img class="corner" src="assets/img/elem-parts/corner.svg"></div>
@@ -163,18 +216,27 @@
                </div>
                <div class="character-details">
                   <div class="character-prices">
-                     <span>Price</span>
-                     <span>Stock</span>
-                     <span>Apiece</span>
+                     <span>Price <?php echo $product_price ?></span>
+                     <span>Stock <?php echo $product_quantity ?></span>
+                     <span>Apiece 1</span>
                   </div>
-                  <div class="character-buttons">
-                     <button class="btn-primary">
-                        XS/S/M/L/XL
-                     </button>
-                     <button class="btn-secondary">
+                  <form class="character-buttons" id="add-to-cart-form" method="POST">
+                     <select name="product_size" id="product-size" class="btn-primary" required>
+                        <option value="" disabled selected>XS/S/M/L/XL</option>
+                        <option value="XS" <?php if($product_sizes['xs']<=0) echo 'disabled'; ?>>XS</option>
+                        <option value="S"<?php if($product_sizes['s']<=0) echo 'disabled'; ?>>S</option>
+                        <option value="M"<?php if($product_sizes['m']<=0) echo 'disabled'; ?>>M</option>
+                        <option value="L"<?php if($product_sizes['l']<=0) echo 'disabled'; ?>>L</option>
+                        <option value="XL"<?php if($product_sizes['xl']<=0) echo 'disabled'; ?>>XL</option>                        
+                     </select>
+                     <input type="hidden" value="<?php echo $product_id ?>" name="product_id">
+                     <input type="hidden" value="<?php echo $product_name ?>" name="product_name">
+                     <input type="hidden" value="<?php echo $product_price ?>" name="product_price">
+                     <input type="hidden" value="<?php echo $product_img ?>" name="product_img">
+                     <button class="btn-secondary" type="submit" name="add_to_cart">
                         Add to cart
                      </button>
-                  </div>
+                  </form>
                </div>
 
             </div>
@@ -197,29 +259,152 @@
                         
                         <!-- description tab -->
                         <div class="product-info-content product-description">
-                           <p>
-                              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque nec neque nec nisl tempus consequat. Sed eget sapien vestibulum, aliquam felis ac, pulvinar nulla. Morbi pretium semper nunc, nec luctus sem sodales ut. Curabitur a posuere odio. Nam porta volutpat lacinia. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Pellentesque vel dignissim diam. Donec eu dui in augue elementum feugiat non nec elit. Integer aliquam, metus id consectetur viverra, enim dolor elementum ipsum, ac tincidunt nisi dui vitae enim. Donec tempus, sapien nec sodales elementum, augue nisl feugiat felis, quis blandit eros odio vel tellus. Maecenas lobortis dolor quis velit hendrerit, eu fringilla purus pellentesque. Nunc molestie est ut est finibus congue. Curabitur at tortor erat. Nulla faucibus, sem a scelerisque elementum, quam ligula maximus enim, quis finibus dui urna ut orci. In vitae tortor laoreet, cursus risus nec, dictum nulla. Nullam interdum elit a tellus faucibus placerat. Aliquam non justo eget felis luctus molestie vitae vel nisi. Curabitur in dui feugiat, porta urna sed, placerat augue. Nunc ac odio ullamcorper, finibus diam feugiat, tempor turpis. Maecenas non ipsum blandit, bibendum leo eget, ornare libero. Suspendisse potenti. Etiam vitae tortor tempus, malesuada libero ac, sodales nisl. Quisque volutpat turpis sit amet commodo placerat.
-                           </p>
+
+                           <?php
+
+                              //Check product type to choose product description
+                              switch ($product_type) {
+                                 case 't-shirt':
+                                    $product_descripiton = '
+                                       <!-- T-shirt description -->
+                                       <h3>Szyte w Polsce, dzięki czemu masz pewność co do jakości wykończenia</h3>
+
+                                       <ul>
+                                          <li>100% bawełna dla Twojej wygody</li>
+                                          <li>Krój oversize z opuszczonymi ramionami, który pomoże Ci wyróżnić się z tłumu</li>
+                                          <li>U góry wykończone ściągaczem dla większej elegancji</li>
+                                          <li>Wysokiej jakości nadruk, którego żadne pranie nie zniszczy</li>
+                                          <li>Limitowana ilość żebyś mógł/mogła poczuć się jeszcze bardziej wyjątkowo</li>
+                                       </ul>
+                                    ';
+                                    break;
+                                 case 'blouse':
+                                    $product_descripiton = '
+                                       <!-- Blouse description -->
+                                       <h3>Szyte w Polsce, dzięki czemu masz pewność co do jakości wykończenia</h3>
+            
+                                       <ul>
+                                          <li>80% bawełny i 20% poliestru żeby bluza była wytrzymała i służyła Ci jak najdłużej</li>
+                                          <li>Krój oversize z opuszczonymi ramionami, który pomoże Ci wyróżnić się z tłumu</li>
+                                          <li>Kaptur i kieszeń kangurka z przodu</li>
+                                          <li>Na dole wykończone ściągaczem dla większej elegancji</li>
+                                          <li>Wysokiej jakości nadruk, którego żadne pranie nie zniszczy</li>
+                                          <li>Limitowana ilość żebyś mógł/mogła poczuć się jeszcze bardziej wyjątkowo</li>
+                                       </ul>
+                                    ';
+                                    break;
+                                 case 'cap':
+                                    $product_descripiton = '
+                                       <!-- Cap description -->            
+                                       <ul>
+                                          <li>Czarna czapka z daszkiem</li>
+                                          <li>Regulowana z tyłu</li>
+                                          <li>Wysokiej jakości, trwały haft z przodu.</li>
+                                       </ul>
+                                    ';
+                                    break;
+                              }
+                              echo $product_descripiton;
+
+                           ?>
+                           
+
                         </div>
                         
                         <!-- sizes tab -->
                         <div class="product-info-content product-sizes">
-                           <img class="sizes-table" src="assets/img/graphics/sizes-table.svg" alt="Tabela rozmiarów">
-                           <img class="sizes-measure" src="assets/img/graphics/sizes-measure.svg" alt="Instrukcja pomiaru wymiarów">
+                           <?php
+                              //Check product type to choose product description
+                              switch ($product_type) {
+                                 case 't-shirt':
+                                    $product_sizes = '
+                                       <img class="sizes-table" src="assets/img/graphics/sizes-table-tshirt.svg" alt="Tabela rozmiarów">
+                                       <img class="sizes-measure" src="assets/img/graphics/sizes-measure-tshirt.svg" alt="Instrukcja pomiaru wymiarów">
+                                    ';
+                                    break;
+                                 case 'blouse':
+                                    $product_sizes = '
+                                       <img class="sizes-table" src="assets/img/graphics/sizes-table-blouse.svg" alt="Tabela rozmiarów">
+                                       <img class="sizes-measure" src="assets/img/graphics/sizes-measure-blouse.svg" alt="Instrukcja pomiaru wymiarów">
+                                    ';
+                                    break;
+                                 case 'cap':
+                                    $product_sizes = '
+                                       <img class="sizes-table" src="assets/img/graphics/sizes-table-blouse.svg" alt="Tabela rozmiarów">
+                                       <img class="sizes-measure" src="assets/img/graphics/sizes-measure-blouse.svg" alt="Instrukcja pomiaru wymiarów">
+                                    ';
+                                    break;
+                              }
+                              echo $product_sizes;
+                           ?>
                         </div>
                         
                         <!-- shipping tab -->
                         <div class="product-info-content product-shipping">
-                           <p>Paczkomat InPost</p>
-                           <p>Kurier DPD</p>
-                           <p>Kurier DHL</p>
+
+                           <p>Zamówienia realizujemy do 2 dni roboczych, zwykle trwa to poniżej 24h.</p>
+
+                           <h3>1. Jaki jest czas dostawy?</h3>
+
+                           <p>Kurier dostarcza paczki w ciągu 1-2 dni roboczych. Dokładamy wszelkich starań, aby Twoje zamówienie dotarło do Ciebie jak najszybciej.</p>
+
+                           <h3>2. Jakie są dostępne formy wysyłki?</h3>
+
+                           <ul>
+                              <li>paczkomaty InPost</li>
+                              <li>kurier DPD</li>
+                              <li>kurier DHL</li>
+                           </ul>
+
+                           <p>Doskonale rozumiemy, że każdy ma jakieś doświadczenia z firmami kurierskimi dlatego u nas to Ty wybierasz najbardziej dogodną dla siebie opcję.</p>
+
+                           <h3>3. Jaki jest koszt wysyłki?</h3>
+
+                           <p>Dla wszystkich przewoźników jest on taki sam i wynosi 12 zł. Wysyłka jest darmowa dla zamówień powyżej 300 zł.</p>
+
+                           <h3>4. Jak mogę śledzić swoje zamówienie?</h3>
+
+                           <p>W momencie wysyłki zamówienia otrzymujesz e-mail z numerem do śledzenia paczki. Dzięki temu możesz sprawdzić aktualny status przesyłki.</p>
+
                         </div>
                         
                         <!-- return tab -->
                         <div class="product-info-content product-return">
-                           <p>
-                              Etiam tempor accumsan nisl, non bibendum dolor rhoncus sed. Suspendisse porttitor mi eu viverra fermentum. Curabitur lobortis massa in dolor hendrerit cursus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Vivamus pharetra tellus ante, vel tempor est imperdiet et. Aenean ornare sem velit, in tempus massa rhoncus quis. Fusce convallis velit lacinia, malesuada mauris vitae, commodo felis. Sed mauris urna, ultrices nec mattis nec, maximus in risus. Sed venenatis, lorem et vehicula auctor, lacus magna pellentesque odio, eu varius libero ligula id ex. Maecenas tempor libero ac magna ultricies condimentum. Vestibulum ac lacinia nulla. Nam a sollicitudin risus. Fusce dui augue, porttitor eget purus a, maximus dictum leo.
-                           </p>
+
+                           <p>Zależy nam na Twojej pełnej satysfakcji, dlatego zakupiony produkt możesz bez problemu zwrócić do 20 dni roboczych od dnia otrzymania zamówienia.</p>
+
+                           <h3>1. Jak dokonać zwrotu?</h3>
+
+                           <ul>
+                              <li>Upewnij się, że zwracany produkt nie nosi żadnych śladów użytkowania lub uszkodzeń, a także zawiera oryginalne metki, opakowanie i dowód zakupu</li>
+                              <li>Wypełnij formularz zwrotu i umieść go w paczce</li>
+                              <li>Wyślij do nas paczkę za pośrednictwem wybranego przez siebie przewoźnika</li>
+                           </ul>
+
+                           <p>Pieniądze zostaną Ci zwrócone natychmiastowo po rozpatrzeniu reklamacji.</p>
+
+                           <h3>2. Ile dni mam na zwrot?</h3>
+
+                           <p>Jesteśmy pewni swojej jakości, dlatego dajemy Ci aż 20 dni roboczych na zrobienie zwrotu.</p>
+
+                           <h3>3. Kiedy otrzymam zwrot pieniędzy?</h3>
+
+                           <p>Pieniądze zwracamy w ciągu 14 dni roboczych. Zazwyczaj trwa to jednak znacznie krócej, ponieważ od razu po rozpatrzeniu zwrotu zlecamy wypłatę środków.</p>
+
+                           <h3>4. Na jakie dane nadać przesyłkę zwrotną i kto ją opłaca?</h3>
+
+                           <p>Paczkę wyślij na adres:<br>
+                           „BALLIN MOB Marcin Barłowski”<br>
+                           ul. Łukasińskiego 30A/10<br>
+                           71-215 Szczecin<br>
+                           tel. 723932079</p>
+
+                           <p>Zwrot kosztów obejmuje cenę produktu, jak i pierwszej wysyłki. Koszt wysyłki zwrotnej pokrywa klient.</p>
+
+                           <h3>5. Gdzie znajdę formularz zwrotu?</h3>
+
+                           <p>Formularz zwrotu do pobrania znajdziesz po tym linkiem. Jeśli nie masz możliwości wydrukowania go, napisz do nas, a zrobimy to online.</p>
+
                         </div>
                         
                      </div>
@@ -245,15 +430,41 @@
 
    <?php include 'website-parts/footer.php'; ?>
 
-</div>
-
-
-<!-- Default JS -->
-<script src="assets/js/jquery.js"></script>
-<script src="assets/js/main.js"></script>
-
 <!-- Additional JS -->
-<script src="assets/js/product.js"></script>
+<script src="assets/js/character.js"></script>
+
+<!-- On page JavaScript -->
+<script>
+
+   window.onload = (event) => {
+      // Product images slider
+      const arrowLeft = document.querySelector('.arrow-left img');
+      const arrowRight = document.querySelector('.arrow-right');
+      const currentImage = document.querySelector('.product-current-image');
+      const productImages = <?php echo json_encode($product_images_array) ?>;
+
+      let imgCount = 0;
+
+      arrowLeft.addEventListener('click', function() {
+         if(imgCount == 0) {
+            imgCount = productImages.length - 1;
+            console.log(imgCount);
+         }
+         else imgCount--;
+         currentImage.src = productImages[imgCount];
+      });
+
+      arrowRight.addEventListener('click', function() {
+         if(imgCount == (productImages.length - 1)) {
+            imgCount = 0;
+            console.log(imgCount);
+         }
+         else imgCount++;
+         currentImage.src = productImages[imgCount];
+      });
+   }
+
+</script>
 
 </body>
 </html>

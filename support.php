@@ -17,38 +17,8 @@
 <!------- DESKTOP -------->
 <!------------------------>
 
-<div class="desktop">
+<?php include 'website-parts/desktop.php'; ?>
 
-   <div class="desktop-folders">
-      <div class="desktop-folder menu-folder">
-         <img class="cart-desktop-folder" src="assets/img/elem-parts/menu.webp" alt="Ikonka menu">
-         <span>Menu</span>
-      </div>
-         
-      <div class="desktop-folder cart-folder" id="cart-folder">
-         <img class="cart-desktop-folder" src="assets/img/elem-parts/cart-empty.webp" alt="Ikonka pustego koszyka">
-         <span>Orders</span>
-      </div>
-   </div>
-
-   <!-- empty cart warning -->
-   <dialog id="empty-cart-modal">
-      <div class="window-container-topbar">
-         <div class="window-container-topbar-left">
-            Warning
-         </div>
-         <button class="window-container-close-icon" id="close-empty-cart-modal">
-            <img src="assets/img/icons/close-small.svg" alt="Ikonka zamknij">
-         </button>
-      </div>
-      <div class="empty-cart-modal-content">
-         <p>
-            <img src="assets/img/icons/access-denied-icon.svg" alt="Ikonka odmowy dostępu">
-            Access is denied. Your cart is empty.
-         </p>
-         <button class="btn-primary btn-primary-dashed" id="close-empty-cart-modal">OK</button>
-      </div>
-   </dialog>
 
 
 
@@ -61,7 +31,7 @@
          <div class="window-container big app-container word">
             <div class="window-container-topbar">
                <div class="window-container-topbar-left">
-                  <img class="window-container-icon" src="assets/img/icons/menu icons/support-icon.svg" alt="Ikonka produktu">
+                  <img class="window-container-icon" src="assets/img/icons/menu icons/support-icon.png" alt="Ikonka produktu">
                   Support.exe
                </div>
                <div class="window-container-icons">
@@ -73,9 +43,9 @@
 
             <p class="app-tabs">
                <span><a href="vision.php">Vision</a></span>
-               <span><a href="support.php">Support</a></span>
                <span><a href="contact.php">Contact</a></span>
                <span><a href="terms.php">Terms</a></span>
+               <span><a href="privacy.php">Privacy</a></span>
             </p>
 
             <div class="word-editor-container">
@@ -110,8 +80,8 @@
 
                            <ul>
                               <li>mailowo: <a href="mailto:mob@ballin.pl">mob@ballin.pl</a></li>
-                              <li>Instagram Direct message: tutaj dać odnośnik do profili, ale nie w postaci linku</li>
-                              <li>Facebook: tutaj dać odnośnik do profili, ale nie w postaci linku</li>
+                              <li><a href="https://www.instagram.com/ballin.pl/" target="_blank">Instagram Direct message</a></li>
+                              <li><a href="https://www.facebook.com/ballinmob" target="_blank">Facebook</a></li>
                               <li>telefonicznie:  <a href="tel:+48888-773-756">+48 <strong>888 773 756</a> ( 9-16, poniedziałek - piątek)</strong></li>
                            </ul>
 
@@ -159,11 +129,11 @@
 
                            <h3>2. Jakie są dostępne formy wysyłki?</h3>
 
-                           <ol>
+                           <ul>
                               <li>paczkomaty InPost</li>
                               <li>kurier DPD</li>
                               <li>kurier DHL</li>
-                           </ol>
+                           </ul>
 
                            <p>Doskonale rozumiemy, że każdy ma jakieś doświadczenia z firmami kurierskimi dlatego u nas to Ty wybierasz najbardziej dogodną dla siebie opcję.</p>
 
@@ -186,11 +156,11 @@
 
                            <p>Zależy nam na Twojej pełnej satysfakcji, dlatego zakupiony produkt możesz bez problemu zwrócić do 20 dni roboczych od dnia otrzymania zamówienia.</p>
 
-                           <ol>
+                           <ul>
                               <li>Upewnij się, że zwracany produkt nie nosi żadnych śladów użytkowania lub uszkodzeń, a także zawiera oryginalne metki, opakowanie i dowód zakupu</li>
                               <li>Wypełnij formularz zwrotu i umieść go w paczce</li>
                               <li>Wyślij do nas paczkę za pośrednictwem wybranego przez siebie przewoźnika</li>
-                           </ol>
+                           </ul>
 
                            <p>Pieniądze zostaną Ci zwrócone natychmiastowo po rozpatrzeniu reklamacji.</p>
 
@@ -205,7 +175,8 @@
                            <h3>4. Na jakie dane nadać przesyłkę zwrotną i kto ją opłaca?</h3>
 
                            <p>
-                              Paczkę wyślij na adres: „BALLIN MOB Marcin Barłowski”<br>
+                              Paczkę wyślij na adres:<br>
+                              „BALLIN MOB Marcin Barłowski”<br>
                               ul. Łukasińskiego 30A/10<br>
                               71-215 Szczecin<br>
                               tel. 723932079
@@ -262,8 +233,7 @@
    <!------------------------------->
 
    <?php include 'website-parts/footer.php'; ?>
-
-</div>
+   
 
 
 <!-- Default JS -->

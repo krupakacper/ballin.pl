@@ -1,3 +1,15 @@
+<?php
+
+session_start();
+
+require_once('php-guts/CreateDb.php');
+require_once('php-guts/components.php');
+
+// create instance of CreateDb class
+$database = new CreateDb();
+
+?>
+
 <!DOCTYPE html>
 <html lang="pl">
 <head>
@@ -17,39 +29,8 @@
 <!------- DESKTOP -------->
 <!------------------------>
 
-<div class="desktop">
+<?php include 'website-parts/desktop.php'; ?>
 
-
-   <div class="desktop-folders">
-      <div class="desktop-folder menu-folder">
-         <img class="cart-desktop-folder" src="assets/img/elem-parts/menu.webp" alt="Ikonka menu">
-         <span>Menu</span>
-      </div>
-         
-      <div class="desktop-folder cart-folder" id="cart-folder">
-         <img class="cart-desktop-folder" src="assets/img/elem-parts/cart-empty.webp" alt="Ikonka pustego koszyka">
-         <span>Orders</span>
-      </div>
-   </div>
-
-   <!-- empty cart warning -->
-   <dialog id="empty-cart-modal">
-      <div class="window-container-topbar">
-         <div class="window-container-topbar-left">
-            Warning
-         </div>
-         <button class="window-container-close-icon" id="close-empty-cart-modal">
-            <img src="assets/img/icons/close-small.svg" alt="Ikonka zamknij">
-         </button>
-      </div>
-      <div class="empty-cart-modal-content">
-         <p>
-            <img src="assets/img/icons/access-denied-icon.svg" alt="Ikonka odmowy dostępu">
-            Access is denied. Your cart is empty.
-         </p>
-         <button class="btn-primary btn-primary-dashed" id="close-empty-cart-modal">OK</button>
-      </div>
-   </dialog>
 
 
 
@@ -59,232 +40,13 @@
 
    <div class="content-container content-container-twitter no-scrollbar-container">
 
-
-         <div class="twitter-post">
-
-            <div class="twitter-post-topbar">
-               <div class="twitter-profile-img"></div>
-               <img class="twitter-more-dots" src="assets/img/icons/three-dots.svg" alt="Ikonka więcej">
-            </div>
-
-            <a class="twitter-post-img" href="character.php"></a>
-
-            <footer class="twitter-post-footer">
-               <div class="twitter-footer-col twitter-price">
-                  <img src="assets/img/icons/price-icon.svg" alt="Ikona ceny">
-               </div>
-               <div class="twitter-footer-col twitter-quantity">
-                  <img src="assets/img/icons/box.svg" alt="Ikona ilości produktów">
-                  100
-               </div>
-               <div class="twitter-footer-col twitter-person">
-                  <img src="assets/img/icons/person-icon.svg" alt="Ikona ilości zakupów">
-                  1
-               </div>
-            </footer>
-
-         </div>
-
-         <div class="twitter-post">
-
-            <div class="twitter-post-topbar">
-               <div class="twitter-profile-img"></div>
-               <img class="twitter-more-dots" src="assets/img/icons/three-dots.svg" alt="Ikonka więcej">
-            </div>
-
-            <a class="twitter-post-img" href="character.php"></a>
-
-            <footer class="twitter-post-footer">
-               <div class="twitter-footer-col twitter-price">
-                  <img src="assets/img/icons/price-icon.svg" alt="Ikona ceny">
-               </div>
-               <div class="twitter-footer-col twitter-quantity">
-                  <img src="assets/img/icons/box.svg" alt="Ikona ilości produktów">
-                  100
-               </div>
-               <div class="twitter-footer-col twitter-person">
-                  <img src="assets/img/icons/person-icon.svg" alt="Ikona ilości zakupów">
-                  1
-               </div>
-            </footer>
-
-         </div>
-
-         <div class="twitter-post">
-
-            <div class="twitter-post-topbar">
-               <div class="twitter-profile-img"></div>
-               <img class="twitter-more-dots" src="assets/img/icons/three-dots.svg" alt="Ikonka więcej">
-            </div>
-
-            <a class="twitter-post-img" href="character.php"></a>
-
-            <footer class="twitter-post-footer">
-               <div class="twitter-footer-col twitter-price">
-                  <img src="assets/img/icons/price-icon.svg" alt="Ikona ceny">
-               </div>
-               <div class="twitter-footer-col twitter-quantity">
-                  <img src="assets/img/icons/box.svg" alt="Ikona ilości produktów">
-                  100
-               </div>
-               <div class="twitter-footer-col twitter-person">
-                  <img src="assets/img/icons/person-icon.svg" alt="Ikona ilości zakupów">
-                  1
-               </div>
-            </footer>
-
-         </div>
-
-         <div class="twitter-post">
-
-            <div class="twitter-post-topbar">
-               <div class="twitter-profile-img"></div>
-               <img class="twitter-more-dots" src="assets/img/icons/three-dots.svg" alt="Ikonka więcej">
-            </div>
-
-            <a class="twitter-post-img" href="character.php"></a>
-
-            <footer class="twitter-post-footer">
-               <div class="twitter-footer-col twitter-price">
-                  <img src="assets/img/icons/price-icon.svg" alt="Ikona ceny">
-               </div>
-               <div class="twitter-footer-col twitter-quantity">
-                  <img src="assets/img/icons/box.svg" alt="Ikona ilości produktów">
-                  100
-               </div>
-               <div class="twitter-footer-col twitter-person">
-                  <img src="assets/img/icons/person-icon.svg" alt="Ikona ilości zakupów">
-                  1
-               </div>
-            </footer>
-
-         </div>
-
-         <div class="twitter-post">
-
-            <div class="twitter-post-topbar">
-               <div class="twitter-profile-img"></div>
-               <img class="twitter-more-dots" src="assets/img/icons/three-dots.svg" alt="Ikonka więcej">
-            </div>
-
-            <a class="twitter-post-img" href="character.php"></a>
-
-            <footer class="twitter-post-footer">
-               <div class="twitter-footer-col twitter-price">
-                  <img src="assets/img/icons/price-icon.svg" alt="Ikona ceny">
-               </div>
-               <div class="twitter-footer-col twitter-quantity">
-                  <img src="assets/img/icons/box.svg" alt="Ikona ilości produktów">
-                  100
-               </div>
-               <div class="twitter-footer-col twitter-person">
-                  <img src="assets/img/icons/person-icon.svg" alt="Ikona ilości zakupów">
-                  1
-               </div>
-            </footer>
-
-         </div>
-
-         <div class="twitter-post">
-
-            <div class="twitter-post-topbar">
-               <div class="twitter-profile-img"></div>
-               <img class="twitter-more-dots" src="assets/img/icons/three-dots.svg" alt="Ikonka więcej">
-            </div>
-
-            <a class="twitter-post-img" href="character.php"></a>
-
-            <footer class="twitter-post-footer">
-               <div class="twitter-footer-col twitter-price">
-                  <img src="assets/img/icons/price-icon.svg" alt="Ikona ceny">
-               </div>
-               <div class="twitter-footer-col twitter-quantity">
-                  <img src="assets/img/icons/box.svg" alt="Ikona ilości produktów">
-                  100
-               </div>
-               <div class="twitter-footer-col twitter-person">
-                  <img src="assets/img/icons/person-icon.svg" alt="Ikona ilości zakupów">
-                  1
-               </div>
-            </footer>
-
-         </div>
-
-         <div class="twitter-post">
-
-            <div class="twitter-post-topbar">
-               <div class="twitter-profile-img"></div>
-               <img class="twitter-more-dots" src="assets/img/icons/three-dots.svg" alt="Ikonka więcej">
-            </div>
-
-            <a class="twitter-post-img" href="character.php"></a>
-
-            <footer class="twitter-post-footer">
-               <div class="twitter-footer-col twitter-price">
-                  <img src="assets/img/icons/price-icon.svg" alt="Ikona ceny">
-               </div>
-               <div class="twitter-footer-col twitter-quantity">
-                  <img src="assets/img/icons/box.svg" alt="Ikona ilości produktów">
-                  100
-               </div>
-               <div class="twitter-footer-col twitter-person">
-                  <img src="assets/img/icons/person-icon.svg" alt="Ikona ilości zakupów">
-                  1
-               </div>
-            </footer>
-
-         </div>
-
-         <div class="twitter-post">
-
-            <div class="twitter-post-topbar">
-               <div class="twitter-profile-img"></div>
-               <img class="twitter-more-dots" src="assets/img/icons/three-dots.svg" alt="Ikonka więcej">
-            </div>
-
-            <a class="twitter-post-img" href="character.php"></a>
-
-            <footer class="twitter-post-footer">
-               <div class="twitter-footer-col twitter-price">
-                  <img src="assets/img/icons/price-icon.svg" alt="Ikona ceny">
-               </div>
-               <div class="twitter-footer-col twitter-quantity">
-                  <img src="assets/img/icons/box.svg" alt="Ikona ilości produktów">
-                  100
-               </div>
-               <div class="twitter-footer-col twitter-person">
-                  <img src="assets/img/icons/person-icon.svg" alt="Ikona ilości zakupów">
-                  1
-               </div>
-            </footer>
-
-         </div>
-
-         <div class="twitter-post">
-
-            <div class="twitter-post-topbar">
-               <div class="twitter-profile-img"></div>
-               <img class="twitter-more-dots" src="assets/img/icons/three-dots.svg" alt="Ikonka więcej">
-            </div>
-
-            <a class="twitter-post-img" href="character.php"></a>
-
-            <footer class="twitter-post-footer">
-               <div class="twitter-footer-col twitter-price">
-                  <img src="assets/img/icons/price-icon.svg" alt="Ikona ceny">
-               </div>
-               <div class="twitter-footer-col twitter-quantity">
-                  <img src="assets/img/icons/box.svg" alt="Ikona ilości produktów">
-                  100
-               </div>
-               <div class="twitter-footer-col twitter-person">
-                  <img src="assets/img/icons/person-icon.svg" alt="Ikona ilości zakupów">
-                  1
-               </div>
-            </footer>
-
-         </div>
-
+      <?php 
+         //display all twitter product posts
+         $result = $database->getProduct();
+         while($row = mysqli_fetch_assoc($result)) {
+            twitter_component($row['product_tw_prof'], $row['product_tw_img'], $row['product_price'], $row['product_quantity']);
+         }
+      ?>
 
    </div>
 
@@ -296,7 +58,6 @@
 
    <?php include 'website-parts/footer.php'; ?>
 
-</div>
 
 
 <script src="assets/js/main.js"></script>

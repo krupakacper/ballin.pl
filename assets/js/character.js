@@ -7,21 +7,22 @@ let infoNewHeight = containerHeight - 10;                 //set the info area he
 
 infoArea.style.height = infoNewHeight + 'px';            //set new info area height
 
+
 // Product info tabs switch
 $('.character-info-tabs-buttons button').click(function(event) {
    index = $(this).index();
 
-   // change clicked button
+   //change clicked button
    $('.character-info-tabs-buttons button').removeClass('btn-primary-clicked');
    $(this).addClass('btn-primary-clicked');
 
-   // change displayed tab
+   //change displayed tab
    $('.product-info-content').hide();
    $('.product-info-content').eq(index).show();
    $('.product-info-content').eq(index).css('display', 'flex');
    
 
-   // save info which tab was open last
+   //save info which tab was open last
    localStorage.setItem("LastProductInfoTab", index)
 });
 getLastProductInfoTab = localStorage.getItem("LastProductInfoTab");

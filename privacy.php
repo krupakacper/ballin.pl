@@ -17,38 +17,7 @@
 <!------- DESKTOP -------->
 <!------------------------>
 
-<div class="desktop">
-
-   <div class="desktop-folders">
-      <div class="desktop-folder menu-folder">
-         <img class="cart-desktop-folder" src="assets/img/elem-parts/menu.webp" alt="Ikonka menu">
-         <span>Menu</span>
-      </div>
-         
-      <div class="desktop-folder cart-folder" id="cart-folder">
-         <img class="cart-desktop-folder" src="assets/img/elem-parts/cart-empty.webp" alt="Ikonka pustego koszyka">
-         <span>Orders</span>
-      </div>
-   </div>
-
-   <!-- empty cart warning -->
-   <dialog id="empty-cart-modal">
-      <div class="window-container-topbar">
-         <div class="window-container-topbar-left">
-            Warning
-         </div>
-         <button class="window-container-close-icon" id="close-empty-cart-modal">
-            <img src="assets/img/icons/close-small.svg" alt="Ikonka zamknij">
-         </button>
-      </div>
-      <div class="empty-cart-modal-content">
-         <p>
-            <img src="assets/img/icons/access-denied-icon.svg" alt="Ikonka odmowy dostępu">
-            Access is denied. Your cart is empty.
-         </p>
-         <button class="btn-primary btn-primary-dashed" id="close-empty-cart-modal">OK</button>
-      </div>
-   </dialog>
+<?php include 'website-parts/desktop.php'; ?>
 
 
 
@@ -61,7 +30,7 @@
          <div class="window-container big app-container word">
             <div class="window-container-topbar">
                <div class="window-container-topbar-left">
-                  <img class="window-container-icon" src="assets/img/icons/menu icons/privacy-icon.svg" alt="Ikonka produktu">
+                  <img class="window-container-icon" src="assets/img/icons/menu icons/privacy-icon.png" alt="Ikonka produktu">
                   Privacy.exe
                </div>
                <div class="window-container-icons">
@@ -163,7 +132,6 @@
 
    <?php include 'website-parts/footer.php'; ?>
 
-</div>
 
 
 <!-- Default JS -->

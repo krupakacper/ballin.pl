@@ -108,7 +108,7 @@ body {
    color: var(--white);
    text-decoration: none;
    font-size: clamp(1.5rem, 3vw, 2.125rem);
-   text-transform: uppercase;
+   text-transform: capitalize;
 }
 .landing-link:hover {
    color: var(--grey-brigter);

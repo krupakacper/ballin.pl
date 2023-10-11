@@ -5,20 +5,6 @@ $database = new CreateDb();
 
 // Add new product to database
 if(isset($_POST['new-product-submit'])) {
-   
-   // Create folder for product images
-   $sql = "SELECT id FROM products ORDER BY id DESC LIMIT 1";
-   $result = $database->getProduct(null, $sql);
-   while($row = mysqli_fetch_assoc($result)) {
-      $lastId = $row['id'];
-   }
-
-   $newProductId = $lastId + 1;
-   $newProductFolderName = '../../../assets/img/products/product-'.$newProductId;
-
-   if (!is_dir($newProductFolderName)) {
-      mkdir($newProductFolderName, 0777, true);
-   }
 
    // Check number of products images
    $numOfNewImgs = count($_FILES['new-img']['name']);
@@ -44,7 +30,7 @@ if(isset($_POST['new-product-submit'])) {
          } else {
             array_push($is_valid, 'false');
          }
-      }      
+      }
    }
    //errors
    for($i = 0; $i < $numOfNewImgs; $i++) {
@@ -54,7 +40,7 @@ if(isset($_POST['new-product-submit'])) {
          echo '<script>alert("ERROR!")</script>';
       } else {
          array_push($is_valid, 'true');
-      }      
+      }
    }
 
    
@@ -62,23 +48,15 @@ if(isset($_POST['new-product-submit'])) {
    if(array_search('false', $is_valid)) {
       echo '<script>alert("Błąd podczas wgrywania plików!")</script>';
    } else {
-      for($i = 0; $i < $numOfNewImgs; $i++) {         
-         //get current image data
-         $file_name = $_FILES['new-img']['name'][$i];
-         $file_tmp_name = $_FILES['new-img']['tmp_name'][$i];
 
-         $file_name_exploded = explode('.', $file_name);
-         $file_actual_ext = strtolower(end($file_name_exploded));
-
-         //add images to new folder
-         $file_name_new = $file_name_exploded[0].'.'.$file_actual_ext;
-         $file_destionation = $newProductFolderName.'/'.$file_name_new;
-         move_uploaded_file($file_tmp_name, $file_destionation);
-
-         $imageDir = 'assets/img/products/product-'.$newProductId;
-         $imageLocation = $imageDir.'/'.$file_name_new;
-         $product_images_directories = $product_images_directories.$imageLocation.',';         
+      $file_error = $_FILES['new-img-tw-prof']['error'];
+      if($file_error === 1) {
+         array_push($is_valid, 'false');
+         echo '<script>alert("ERROR!")</script>';
+      } else {
+         array_push($is_valid, 'true');
       }
+
 
       $product_name = $_POST['product_name'];
       $product_price = $_POST['product_price'];
@@ -90,10 +68,76 @@ if(isset($_POST['new-product-submit'])) {
          'l' => $_POST['l'],
          'xl' => $_POST['xl']
       );
-      $product_images = rtrim($product_images_directories, ",");
 
-      $database->setProduct($product_name, $product_price, $product_type, $product_sizes, $product_images);
+
+      $id = $database->setProduct($product_name, $product_price, $product_type, $product_sizes);
+    
+
+      // Create folder for images
+      $newProductFolderName = '../../../assets/img/products/product-'.$id;
+      if (!is_dir($newProductFolderName)) {
+         mkdir($newProductFolderName, 0777, true);
+      }
+
+
+      // Add images to folder
+      for($i = 0; $i < $numOfNewImgs; $i++) {         
+         //get current image data
+         $file_name = $_FILES['new-img']['name'][$i];
+         $file_tmp_name = $_FILES['new-img']['tmp_name'][$i];
+
+         $file_name_exploded = explode('.', $file_name);
+         $file_actual_ext = strtolower(end($file_name_exploded));
+
+         //add images to string
+         $file_name_new = $file_name_exploded[0].'.'.$file_actual_ext;
+
+         $imageDir = 'assets/img/products/product-'.$id;
+         $imageLocation = $imageDir.'/'.$file_name_new;
+         $product_images_directories = $product_images_directories.$imageLocation.',';
+         $product_images = rtrim($product_images_directories, ",");
+
+         //add images to new folder
+         $file_name_new = $file_name_exploded[0].'.'.$file_actual_ext;
+         $file_destionation = $newProductFolderName.'/'.$file_name_new;
+         move_uploaded_file($file_tmp_name, $file_destionation);  
+      }
+
+       
+
+      // Add tw prof img to folder
+      $file_name = $_FILES['new-img-tw-prof']['name'];
+      $file_tmp_name = $_FILES['new-img-tw-prof']['tmp_name'];
+
+      $file_name_exploded = explode('.', $file_name);
+      $file_actual_ext = strtolower(end($file_name_exploded));
+
+      //add images to new folder
+      $file_name_new_tw_prof = $file_name_exploded[0].'.'.$file_actual_ext;
+      $file_destionation_tw_prof = $newProductFolderName.'/'.$file_name_new_tw_prof;
+      move_uploaded_file($file_tmp_name, $file_destionation_tw_prof);
+
+       
+      // Add tw img to folder
+      $file_name = $_FILES['new-img-tw']['name'];
+      $file_tmp_name = $_FILES['new-img-tw']['tmp_name'];
+
+      $file_name_exploded = explode('.', $file_name);
+      $file_actual_ext = strtolower(end($file_name_exploded));
+
+      //add images to new folder
+      $file_name_new_tw = $file_name_exploded[0].'.'.$file_actual_ext;
+      $file_destionation = $newProductFolderName.'/'.$file_name_new_tw;
+      move_uploaded_file($file_tmp_name, $file_destionation);
+
+      $product_tw = $imageDir.'/'.$file_name_new_tw;
+      $product_tw_prof = $imageDir.'/'.$file_name_new_tw_prof;
+
+
+      $database->setProductImgs($id, $product_images, $product_tw, $product_tw_prof);
+      
    }
+   
 
    header('Location: ../../products.php');
 }

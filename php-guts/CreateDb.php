@@ -146,17 +146,12 @@ class CreateDb {
 
 
    //set new product
-   public function setProduct($product_name, $product_price, $product_type, $product_sizes, $product_images) {
-
-      // $sql = "INSERT INTO products 
-      // (`product_name`, `product_price`, `product_type`, `product_images`, `product_tw_img`, `product_tw_prof`) 
-      // VALUES 
-      // ('$product_name','$product_price','$product_type','$product_images','[value-5]','[value-6]')"   <-- correct sql not temporary
+   public function setProduct($product_name, $product_price, $product_type, $product_sizes) {
 
       $sql = "INSERT INTO products 
-      (`product_name`, `product_price`, `product_type`, `product_images`) 
+      (`product_name`, `product_price`, `product_type`) 
       VALUES 
-      ('$product_name','$product_price','$product_type','$product_images')";
+      ('$product_name','$product_price','$product_type')";
             
       if(mysqli_query($this->connection, $sql)) {
          $id = mysqli_insert_id($this->connection);
@@ -170,6 +165,17 @@ class CreateDb {
          return $id;
       }
       else echo "Error inserting data: ".mysqli_error($this->connection);
+
+   }
+
+
+   //set new product images
+   public function setProductImgs($id, $product_images, $product_tw_img, $product_tw_prof) {
+
+      $sql = "UPDATE products SET `product_images`='$product_images',`product_tw_img`='$product_tw_img',`product_tw_prof`='$product_tw_prof' WHERE `id`='$id'";
+      if(!mysqli_query($this->connection, $sql)) {
+         return "Error updating product images: ".mysqli_error($this->connection);
+      }
 
    }
 

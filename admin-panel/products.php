@@ -58,13 +58,19 @@ $database = new CreateDb();
             <form class="product element new-product-form" method="post" enctype="multipart/form-data" action="assets-admin/php/add-new-product.php">
 
                <div class="product-img new-product-img">
-                  <strong class="order-header">Dodaj zdjęcia:</strong>
+                  <strong class="order-header">Dodaj zdjęcia produktu:</strong>
                   <fieldset name="product_images" id="new-product-images">
                      <div class="new-img-input-row"><label>1. </label><input type="file" name="new-img[]" class="new-product-img-input" id="new-img-1" accept="image/png, image/jpeg, image/webp" required></div>
                   </fieldset>
                   <button id="add-product-img-btn" type="button">
                      <img src="assets-admin/img/icons/plus-icon.svg">
                   </button>
+                  <fieldset name="product_images" id="new-product-images_tw">
+                     <strong style="margin-top: 15px;">Profilowe Twitter:</strong>
+                     <div class="new-tw-img-input-row"><label></label><input type="file" name="new-img-tw-prof" accept="image/png, image/jpeg, image/webp" required></div>
+                     <strong style="margin-top: 5px;">Post Twitter:</strong>
+                     <div class="new-tw-img-input-row"><label></label><input type="file" name="new-img-tw" accept="image/png, image/jpeg, image/webp" required></div>
+                  </fieldset>
                </div>
 
                <div class="product-data-col1">

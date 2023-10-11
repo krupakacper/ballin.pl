@@ -172,7 +172,7 @@ function product_component($product_img = '', $product_name = '', $id = '', $pro
          </div>
 
          <div class="product-action-btns">
-            <button class="action-btn product-delete-btn">
+            <button class="action-btn product-delete-btn" onclick="deleteProduct('.$id.')">
                <img src="assets-admin/img/icons/delete-icon.svg" alt="Przycisk usuń">
             </button>
             <button class="action-btn product-edit-btn">

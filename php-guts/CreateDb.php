@@ -84,10 +84,19 @@ class CreateDb {
    }
 
 
+   //get last inserted product id
+   public function lastProductId() {
+      return $id = mysqli_insert_id($this->connection);
+   }
+
+
    //get product from database
-   public function getProduct($id = null) {
-      if($id == null) $sql = "SELECT * FROM products";
+   public function getProduct($id = null, $query = null) {
+      if($id === null) $sql = "SELECT * FROM products";
       else $sql = "SELECT * FROM products WHERE id = $id";
+
+      if($query === null) $sql = "SELECT * FROM products";
+      else $sql = $query;
             
       $result = mysqli_query($this->connection, $sql);
       if(mysqli_num_rows($result) > 0) {
@@ -119,12 +128,57 @@ class CreateDb {
       if($m!==null) $sizes['m'] = $m;
       if($l!==null) $sizes['l'] = $l;
       if($xl!==null) $sizes['xl'] = $xl;
+
+      $quantity = array_sum($sizes);
       
       $sizes_sql = base64_encode(serialize($sizes));
+      //update sizes
       $sql = "UPDATE products SET product_sizes='$sizes_sql' WHERE id='$id'";
-      // $result = mysqli_query($this->connection, $sql);
       if(!mysqli_query($this->connection, $sql)) {
          echo "Error updating data: ".mysqli_error($this->connection);
+      }
+      //update quantity
+      $sql = "UPDATE products SET product_quantity='$quantity' WHERE id='$id'";
+      if(!mysqli_query($this->connection, $sql)) {
+         echo "Error updating data: ".mysqli_error($this->connection);
+      }
+   }
+
+
+   //set new product
+   public function setProduct($product_name, $product_price, $product_type, $product_sizes, $product_images) {
+
+      // $sql = "INSERT INTO products 
+      // (`product_name`, `product_price`, `product_type`, `product_images`, `product_tw_img`, `product_tw_prof`) 
+      // VALUES 
+      // ('$product_name','$product_price','$product_type','$product_images','[value-5]','[value-6]')"   <-- correct sql not temporary
+
+      $sql = "INSERT INTO products 
+      (`product_name`, `product_price`, `product_type`, `product_images`) 
+      VALUES 
+      ('$product_name','$product_price','$product_type','$product_images')";
+            
+      if(mysqli_query($this->connection, $sql)) {
+         $id = mysqli_insert_id($this->connection);
+         //insert sizes and quantity
+         $xs = $product_sizes['xs'];
+         $s = $product_sizes['s'];
+         $m = $product_sizes['m'];
+         $l = $product_sizes['l'];
+         $xl = $product_sizes['xl'];
+         $this->updateSizes($id, $xs, $s, $m, $l, $xl);
+         return $id;
+      }
+      else echo "Error inserting data: ".mysqli_error($this->connection);
+
+   }
+
+
+   //delete product
+   public function deleteProduct($id = null) {
+      $sql = "DELETE FROM products WHERE id = '$id'";
+      if(!mysqli_query($this->connection, $sql)) {
+         return "Error deleting product: ".mysqli_error($this->connection);
       }
    }
 
@@ -175,7 +229,7 @@ class CreateDb {
    //get orders from database
    public function getOrders($query = null) {
       if($query != null) $sql = $query;
-      else $sql = "SELECT * FROM orders";
+      else $sql = "SELECT * FROM orders ORDER BY order_date DESC";
             
       $result = mysqli_query($this->connection, $sql);
       if(mysqli_num_rows($result) > 0) {

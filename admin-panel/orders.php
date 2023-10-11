@@ -1,7 +1,7 @@
 <?php
 
 require_once('../php-guts/CreateDb.php');
-require_once('assets-admin/admin-components.php');
+require_once('assets-admin/php/admin-components.php');
 
 // create instance of CreateDb class
 $database = new CreateDb();

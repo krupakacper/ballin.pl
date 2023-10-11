@@ -145,6 +145,7 @@ li.current-page a:after {
    justify-content: center;
    align-items: center;
    cursor: pointer;
+   transition: all .15s ease;
 }
 #new-product-btn img {
    width: 20px;
@@ -268,14 +269,21 @@ li.current-page a:after {
    outline: none;
    border-top-right-radius: 5px;
    border-top-left-radius: 5px;
+   padding: 3px 5px;
 }
 .product input:hover, .product input:focus {
    background-color: #cccccc;
 }
 
 /* new product form */
-#new-product-btn:hover {
-   filter: brightness(.9);
+#new-product-btn:hover, #add-product-img-btn:hover {
+   filter: brightness(.75);
+}
+#new-product-btn {
+   transition: all .25s ease;
+}
+#new-product-btn.open {
+   rotate: 135deg;
 }
 .product input {
    background-color: #D9D9D9;
@@ -283,6 +291,75 @@ li.current-page a:after {
    border-bottom: 1px solid black;
    width: unset;
 }
+.product select {
+   background-color: #D9D9D9;
+   border: none;
+   width: unset;
+   padding: 6px 20px;
+   border-radius: 200px;
+}
+.new-product-form fieldset {
+   border: none;
+   display: flex;
+   flex-direction: column;
+   gap: 5px;
+}
+.new-img-input-row {
+   width: 265px;
+}
+.delete-new-img {
+   background-color: transparent;
+   border: none;
+   cursor: pointer;
+   height: 1.05em;
+   width: 1.05em;
+   margin-left: 2px;
+}
+.delete-new-img img {
+   background-color: transparent;
+   border: none;
+   cursor: pointer;
+   height: 1.05em;
+   width: 1.05em;
+   transform: rotate(45deg);
+}
+#add-product-img-btn {
+   background-color: #cccccc;
+   border: none;
+   height: 30px;
+   width: 30px;
+   border-radius: 50%;
+   outline: none;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   cursor: pointer;
+   margin-top: 6px;
+   transition: all .15s ease;
+}
+#add-product-img-btn img {
+   width: 12px;
+}
+
+.new-product-img {
+   display: flex;
+   flex-direction: column;
+}
+.product input[type="file"] {
+   border-bottom: none;
+   border-top-left-radius: 0;
+   border-bottom-left-radius: 0;
+   width: 225px;
+}
 .sizes-table input {
    width: 39px;
+}
+.new-product-action-btns {
+   align-items: end;
+}
+.new-product-save {
+   background-color: #D9D9D9;
+   padding: 6px 20px;
+   border-radius: 200px;
+   font-size: 1em;
 }

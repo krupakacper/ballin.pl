@@ -6,9 +6,26 @@ require_once('assets-admin/php/admin-components.php');
 // create instance of CreateDb class
 $database = new CreateDb();
 
-// echo '<span style="color:white;">';
 
-// echo '</span>';
+$products_sql = "SELECT * FROM products ORDER BY id DESC";
+
+// Filters
+if(isset($_GET['search'])) {
+   $search = $_GET['search'];
+   if(isset($_GET['type'])) {
+      $type = $_GET['type'];
+   }
+
+   if($search != '' && $type != '') {
+      $products_sql = "SELECT * FROM products WHERE product_type = '$type' AND product_name LIKE '%$search%' ORDER BY id DESC";
+   } else if ($search != '') {
+      $products_sql = "SELECT * FROM products WHERE product_name LIKE '%$search%' ORDER BY id DESC";
+   } else if ($type != '') {
+      $products_sql = "SELECT * FROM products WHERE product_type = '$type' ORDER BY id DESC";
+   }
+
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -45,16 +62,22 @@ $database = new CreateDb();
       <!-- Panel -->
       <main class="panel-content-wrapper">
          <div class="filters-wrapper">
-            <form action="" id="filters-form">
+            <!-- FILTERS -->
+            <form method="GET" id="filters-form">
                <button id="new-product-btn" type="button">
                   <img src="assets-admin/img/icons/plus-icon.svg">
                </button>
-               <select name="" id="">
-                  <option value="">Filtruj</option>
+               <select name="type">
+                  <option value="" selected>Wszystkie typy</option>
+                  <option value="blouse" <?php if(isset($_GET['type'])&&$_GET['type']=='blouse') echo 'selected'; ?>>Blouses</option>
+                  <option value="t-shirt" <?php if(isset($_GET['type'])&&$_GET['type']=='t-shirt') echo 'selected'; ?>>T-shirts</option>
+                  <option value="cap" <?php if(isset($_GET['type'])&&$_GET['type']=='cap') echo 'selected'; ?>>Caps</option>
                </select>
-               <input type="text" name="" id="" placeholder="Szukaj">
+               <input type="text" name="search" placeholder="Szukaj" <?php if(isset($_GET['search'])&&$_GET['search']!='') echo 'value="'.$_GET['search'].'"'; ?>>
+               <button type="submit" id="submit-filters">Zastosuj</button>
             </form>
 
+            <!-- NEW PRODUCT -->
             <form class="product element new-product-form" method="post" enctype="multipart/form-data" action="assets-admin/php/add-new-product.php">
 
                <div class="product-img new-product-img">
@@ -103,11 +126,11 @@ $database = new CreateDb();
                            <div class="size-cell">XL</div>
                         </div>
                         <div class="sizes-row sizes-row-bottom">
-                           <div class="size-cell"><input id="product-size-xs" name="xs" type="number" min="0" required></input></div><hr>
-                           <div class="size-cell"><input id="product-size-" name="s" type="number" min="0" required></input></div><hr>
-                           <div class="size-cell"><input id="product-size-" name="m" type="number" min="0" required></input></div><hr>
-                           <div class="size-cell"><input id="product-size-" name="l" type="number" min="0" required></input></div><hr>
-                           <div class="size-cell"><input id="product-size-" name="xl" type="number" min="0" required></input></div>
+                           <div class="size-cell edit-cell"><input id="product-size-xs" name="xs" type="number" min="0" required></input></div><hr>
+                           <div class="size-cell edit-cell"><input id="product-size-" name="s" type="number" min="0" required></input></div><hr>
+                           <div class="size-cell edit-cell"><input id="product-size-" name="m" type="number" min="0" required></input></div><hr>
+                           <div class="size-cell edit-cell"><input id="product-size-" name="l" type="number" min="0" required></input></div><hr>
+                           <div class="size-cell edit-cell"><input id="product-size-" name="xl" type="number" min="0" required></input></div>
                         </div>
                      </div>
                      
@@ -115,7 +138,7 @@ $database = new CreateDb();
                </div>
 
                <div class="product-action-btns new-product-action-btns">
-                  <button type="submit" class="action-btn new-product-save" name="new-product-submit">
+                  <button type="submit" class="action-btn product-save" name="new-product-submit">
                      <strong>Save</strong>
                   </button>
                </div>
@@ -126,9 +149,10 @@ $database = new CreateDb();
 
             <?php
 
-               $result = $database->getProduct();
+               $result = $database->getProduct(null, $products_sql);
 
-               while($row = mysqli_fetch_assoc($result)) {
+               if ($result->num_rows > 0) {
+                  while($row = mysqli_fetch_assoc($result)) {
 
                   $product_images = $row['product_images'];
                   $product_imgages_array = explode(",",$product_images);
@@ -137,8 +161,11 @@ $database = new CreateDb();
 
                   //display orders
                   product_component($product_imgages_array[0], $row['product_name'], $row['id'], $row['product_price'], $row['product_type'], $product_sizes);
-
                }
+               } else {
+                  echo "Nie znaleziono produktów";
+               }
+               
 
             ?>
 

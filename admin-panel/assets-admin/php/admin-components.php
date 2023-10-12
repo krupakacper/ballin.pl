@@ -125,9 +125,16 @@ function order_component($order_id = '', $order_value = 0, $order_date = '', $or
 
 function product_component($product_img = '', $product_name = '', $id = '', $product_price = '', $product_type = '', $product_sizes = '' ) {
 
+   $xs = $product_sizes['xs'];
+   $s = $product_sizes['s'];
+   $m = $product_sizes['m'];
+   $l = $product_sizes['l'];
+   $xl = $product_sizes['xl'];
+
+
    //Element code
    $element = '
-      <div class="product element">
+      <form class="product element" method="post" action"assets-admin/php/update-product.php">
 
          <div class="product-img">
             <img src="../'.$product_img.'" alt="Zdjęcie produktu">
@@ -135,13 +142,13 @@ function product_component($product_img = '', $product_name = '', $id = '', $pro
 
          <div class="product-data-col1">
             <div class="data-row">
-               <strong>Nazwa produktu: </strong><span>'.$product_name.'</span>
+               <strong>Nazwa produktu: </strong><span class="name-static">'.$product_name.'</span><span class="name-edit" style="display:none;"><input class="product-name" name="product_name" type="text" value="'.$product_name.'"></input></span>
             </div>
             <div class="data-row">
-               <strong>Kod produktu: </strong><span>'.$id.'</span>
+               <strong>Kod produktu: </strong><span class="product-id">'.$id.'</span>
             </div>
             <div class="data-row">
-               <strong>Cena: </strong><span>'.$product_price.' zł</span>
+               <strong>Cena: </strong><span class="price-static">'.$product_price.' zł</span><span class="price-edit" style="display:none;"><input class="product-price" name="product_price" type="number" value="'.$product_price.'" min="0"></input> zł</span>
             </div>
          </div>
 
@@ -157,30 +164,42 @@ function product_component($product_img = '', $product_name = '', $id = '', $pro
                      <div class="size-cell">S</div>
                      <div class="size-cell">M</div>
                      <div class="size-cell">L</div>
-                     <div class="size-cell last-cell">XL</div>
+                     <div class="size-cell">XL</div>
                   </div>
-                  <div class="sizes-row sizes-row-bottom">
-                     <div class="size-cell">20</div>
-                     <div class="size-cell">15</div>
-                     <div class="size-cell">56</div>
-                     <div class="size-cell">130</div>
-                     <div class="size-cell last-cell">43</div>
+                  <div class="sizes-row sizes-row-bottom sizes-static">
+                     <div class="size-cell">'.$xs.'</div>
+                     <div class="size-cell">'.$s.'</div>
+                     <div class="size-cell">'.$m.'</div>
+                     <div class="size-cell">'.$l.'</div>
+                     <div class="size-cell">'.$xl.'</div>
+                  </div>
+                  <div class="sizes-row sizes-row-bottom sizes-edit" style="display:none;">
+                     <div class="size-cell edit-cell"><input class="product-size-xs" name="xs" type="number" min="0" value="'.$xs.'"></input></div><hr>
+                     <div class="size-cell edit-cell"><input class="product-size-s" name="s" type="number" min="0" value="'.$s.'"></input></div><hr>
+                     <div class="size-cell edit-cell"><input class="product-size-m" name="m" type="number" min="0" value="'.$m.'"></input></div><hr>
+                     <div class="size-cell edit-cell"><input class="product-size-l" name="l" type="number" min="0" value="'.$l.'"></input></div><hr>
+                     <div class="size-cell edit-cell"><input class="product-size-xl" name="xl" type="number" min="0" value="'.$xl.'"></input></div>
                   </div>
                </div>
                
             </div>
          </div>
 
-         <div class="product-action-btns">
-            <button class="action-btn product-delete-btn" onclick="deleteProduct('.$id.')">
-               <img src="assets-admin/img/icons/delete-icon.svg" alt="Przycisk usuń">
-            </button>
-            <button class="action-btn product-edit-btn">
-               <img src="assets-admin/img/icons/edit-icon.svg" alt="Przycisk edytuj">
+         <div class="product-action-btns-wrapper">
+            <div class="product-action-btns">
+               <button class="action-btn product-delete-btn" onclick="deleteProduct('.$id.')">
+                  <img src="assets-admin/img/icons/delete-icon.svg" alt="Przycisk usuń">
+               </button>
+               <button class="action-btn product-edit-btn" type="button">
+                  <img src="assets-admin/img/icons/edit-icon.svg" alt="Przycisk edytuj">
+               </button>
+            </div>
+            <button type="submit" class="action-btn product-save product-edit-save" name="product-edit-submit">
+               <strong>Save</strong>
             </button>
          </div>
 
-      </div>
+      </form>
    ';
 
    echo $element;

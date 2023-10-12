@@ -92,17 +92,13 @@ class CreateDb {
 
    //get product from database
    public function getProduct($id = null, $query = null) {
-      if($id === null) $sql = "SELECT * FROM products";
-      else $sql = "SELECT * FROM products WHERE id = $id";
+      if($id === null) $sql = "SELECT * FROM products ORDER BY id DESC";
+      else $sql = "SELECT * FROM products WHERE id = $id ORDER BY id DESC";
 
-      if($query === null) $sql = "SELECT * FROM products";
+      if($query === null) $sql = "SELECT * FROM products ORDER BY id DESC";
       else $sql = $query;
             
-      $result = mysqli_query($this->connection, $sql);
-      if(mysqli_num_rows($result) > 0) {
-         return $result;
-      }
-      else echo "Error getting data: ".mysqli_error($this->connection);
+      return $result = mysqli_query($this->connection, $sql);
    }
 
 
@@ -189,15 +185,21 @@ class CreateDb {
    }
 
 
+   //update product
+   public function updateProduct($id = null, $new_name, $new_price, $new_xs, $new_s, $new_m, $new_l, $new_xl) {
+      $sql = "UPDATE products SET product_name ='$new_name', product_price ='$new_price' WHERE id='$id'";
+      if(mysqli_query($this->connection, $sql)) {
+         $this->updateSizes($id, $new_xs, $new_s, $new_m, $new_l, $new_xl);
+      }
+      else echo "Error getting data: ".mysqli_error($this->connection);
+   }
+
+
    //get explorer data
    public function getExplorer() {
       $sql = "SELECT * FROM explorer";
             
-      $result = mysqli_query($this->connection, $sql);
-      if(mysqli_num_rows($result) > 0) {
-         return $result;
-      }
-      else echo "Error getting data: ".mysqli_error($this->connection);
+      return $result = mysqli_query($this->connection, $sql);
    }
 
 
@@ -237,11 +239,7 @@ class CreateDb {
       if($query != null) $sql = $query;
       else $sql = "SELECT * FROM orders ORDER BY order_date DESC";
             
-      $result = mysqli_query($this->connection, $sql);
-      if(mysqli_num_rows($result) > 0) {
-         return $result;
-      }
-      else echo "Error getting data: ".mysqli_error($this->connection);
+      return $result = mysqli_query($this->connection, $sql);
    }
 
 
